@@ -23,6 +23,8 @@
     <csemail.version>1.0</csemail.version>
     <ehcache.version>3.3.1</ehcache.version>
     <mock.version>2.0.2-beta</mock.version>
+    <cas.version>0.0.1</cas.version>
+
   </properties>
   <dependencyManagement>
     <!--酷秀依赖-->
@@ -35,7 +37,7 @@
       <dependency>
         <groupId>cn.com.coolshow.exam</groupId>
         <artifactId>exam_cas_client</artifactId>
-        <version>0.0.1</version>
+        <version>${cas.version}</version>
       </dependency>
       <dependency>
         <groupId>com.coolshow.esb</groupId>

@@ -10,4 +10,10 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>tomexam-common</artifactId>
+  <dependencies>
+      <dependency>
+          <groupId>com.ibeetl</groupId>
+          <artifactId>beetl</artifactId>
+      </dependency>
+  </dependencies>
 </project>
