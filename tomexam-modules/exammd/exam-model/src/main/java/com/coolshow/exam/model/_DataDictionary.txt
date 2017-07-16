@@ -1,0 +1,370 @@
+Table: tm_admin
+--------------+---------------+------+-----+-------------------+---------
+ Field        | Type          | Null | Key | Default           | Remarks 
+--------------+---------------+------+-----+-------------------+---------
+ id           | INT(10)       | NO   | PRI |                   |         
+ username     | VARCHAR(50)   | YES  |     |                   |         
+ userpass     | VARCHAR(50)   | YES  |     |                   |         
+ status       | VARCHAR(2)    | YES  |     |                   |         
+ roleid       | INT(10)       | YES  |     |                   |         
+ realname     | VARCHAR(20)   | YES  |     |                   |         
+ mobi         | VARCHAR(20)   | YES  |     |                   |         
+ remark       | VARCHAR(50)   | YES  |     |                   |         
+ logintimes   | INT(10)       | YES  |     |                   |         
+ lastlogin    | DATETIME(19)  | YES  |     |                   |         
+ regdate      | TIMESTAMP(19) | YES  |     | CURRENT_TIMESTAMP |         
+ departmentid | VARCHAR(50)   | YES  |     |                   | 部门id    
+--------------+---------------+------+-----+-------------------+---------
+
+Table: tm_admin_roles
+---------------+---------------+------+-----+---------+---------
+ Field         | Type          | Null | Key | Default | Remarks 
+---------------+---------------+------+-----+---------+---------
+ id            | INT(10)       | NO   | PRI |         |         
+ rolename      | VARCHAR(50)   | YES  |     |         |         
+ roleprivelege | VARCHAR(1000) | YES  |     |         |         
+ remark        | VARCHAR(50)   | YES  |     |         |         
+ cdate         | DATETIME(19)  | YES  |     |         |         
+---------------+---------------+------+-----+---------+---------
+
+Table: tm_admin_roles_settings
+--------+-------------+------+-----+---------+---------
+ Field  | Type        | Null | Key | Default | Remarks 
+--------+-------------+------+-----+---------+---------
+ id     | INT(10)     | NO   | PRI |         |         
+ ptype  | INT(10)     | YES  |     |         |         
+ pname  | VARCHAR(20) | YES  |     |         |         
+ pcode  | VARCHAR(50) | YES  |     |         |         
+ porder | INT(10)     | YES  |     |         |         
+--------+-------------+------+-----+---------+---------
+
+Table: tm_config
+---------+--------------+------+-----+---------+---------
+ Field   | Type         | Null | Key | Default | Remarks 
+---------+--------------+------+-----+---------+---------
+ id      | INT(10)      | NO   | PRI |         |         
+ cname   | VARCHAR(20)  | YES  |     |         |         
+ confkey | VARCHAR(100) | YES  |     |         |         
+ confval | TEXT(65535)  | YES  |     |         |         
+ remark  | VARCHAR(200) | YES  |     |         |         
+---------+--------------+------+-----+---------+---------
+
+Table: tm_department
+------------------+--------------+------+-----+---------+---------
+ Field            | Type         | Null | Key | Default | Remarks 
+------------------+--------------+------+-----+---------+---------
+ dept_code        | VARCHAR(200) | NO   | PRI |         | 部门code  
+ dept_name        | VARCHAR(100) | YES  |     |         | 部门名称    
+ parent_dept_code | VARCHAR(50)  | YES  |     |         | 上级部门code,根节点为空
+ dept_desc        | VARCHAR(200) | YES  |     |         | 描述      
+ status           | CHAR(1)      | YES  |     | 1       | 有效标记：1有效，0无效
+ creator          | VARCHAR(20)  | YES  |     |         |         
+ create_date      | DATETIME(19) | YES  |     |         |         
+ modifier         | VARCHAR(20)  | YES  |     |         |         
+ modify_date      | DATETIME(19) | YES  |     |         |         
+------------------+--------------+------+-----+---------+---------
+
+Table: tm_exam_detail
+-------------+---------------+------+-----+---------+---------
+ Field       | Type          | Null | Key | Default | Remarks 
+-------------+---------------+------+-----+---------+---------
+ id          | INT(10)       | NO   | PRI |         |         
+ uid         | INT(10)       | YES  |     |         |         
+ pid         | INT(10)       | YES  |     |         |         
+ qid         | INT(10)       | YES  |     |         |         
+ user_answer | VARCHAR(5000) | YES  |     |         |         
+ status      | VARCHAR(2)    | YES  |     |         |         
+ score       | INT(10)       | YES  |     |         |         
+ remark      | VARCHAR(50)   | YES  |     |         |         
+ qtype       | INT(10)       | YES  |     |         |         
+-------------+---------------+------+-----+---------+---------
+
+Table: tm_exam_detail_t
+-------------+--------------+------+-----+---------+---------
+ Field       | Type         | Null | Key | Default | Remarks 
+-------------+--------------+------+-----+---------+---------
+ uid         | INT(10)      | NO   |     |         |         
+ pid         | INT(10)      | YES  |     |         |         
+ qid         | INT(10)      | NO   | PRI |         |         
+ user_answer | VARCHAR(500) | YES  |     |         |         
+ status      | VARCHAR(2)   | YES  |     |         |         
+ score       | INT(10)      | YES  |     |         |         
+ remark      | VARCHAR(50)  | YES  |     |         |         
+ qtype       | INT(10)      | YES  |     |         |         
+-------------+--------------+------+-----+---------+---------
+
+Table: tm_exam_info
+--------+--------------+------+-----+---------+---------
+ Field  | Type         | Null | Key | Default | Remarks 
+--------+--------------+------+-----+---------+---------
+ id     | INT(10)      | NO   | PRI |         |         
+ uid    | INT(10)      | YES  |     |         |         
+ pid    | INT(10)      | YES  |     |         |         
+ sdate  | DATETIME(19) | YES  |     |         |         
+ edate  | DATETIME(19) | YES  |     |         |         
+ ip     | VARCHAR(20)  | YES  |     |         |         
+ score  | INT(10)      | YES  |     |         |         
+ status | VARCHAR(2)   | YES  |     |         |         
+ remark | VARCHAR(50)  | YES  |     |         |         
+--------+--------------+------+-----+---------+---------
+
+Table: tm_log
+----------+--------------+------+-----+---------+---------
+ Field    | Type         | Null | Key | Default | Remarks 
+----------+--------------+------+-----+---------+---------
+ id       | INT(10)      | NO   | PRI |         |         
+ logtype  | VARCHAR(2)   | YES  |     |         |         
+ usertype | VARCHAR(2)   | YES  |     |         |         
+ username | VARCHAR(50)  | YES  |     |         |         
+ uid      | INT(10)      | YES  |     |         |         
+ logtime  | DATETIME(19) | YES  |     |         |         
+ ip       | VARCHAR(50)  | YES  |     |         |         
+ remark   | VARCHAR(50)  | YES  |     |         |         
+----------+--------------+------+-----+---------+---------
+
+Table: tm_news
+-------------+--------------+------+-----+---------+---------
+ Field       | Type         | Null | Key | Default | Remarks 
+-------------+--------------+------+-----+---------+---------
+ id          | INT(10)      | NO   | PRI |         |         
+ title       | VARCHAR(100) | YES  |     |         |         
+ title_color | VARCHAR(20)  | YES  |     |         |         
+ classid     | INT(10)      | YES  |     |         |         
+ content     | TEXT(65535)  | YES  |     |         |         
+ status      | VARCHAR(2)   | YES  |     |         |         
+ summary     | VARCHAR(200) | YES  |     |         |         
+ totop       | INT(10)      | YES  |     |         |         
+ visit       | INT(10)      | YES  |     |         |         
+ postdate    | DATETIME(19) | YES  |     |         |         
+ photo       | VARCHAR(50)  | YES  |     |         |         
+ author      | VARCHAR(20)  | YES  |     |         |         
+ outlink     | VARCHAR(200) | YES  |     |         |         
+ newsfrom    | VARCHAR(50)  | YES  |     |         |         
+ adminid     | INT(10)      | YES  |     |         |         
+-------------+--------------+------+-----+---------+---------
+
+Table: tm_news_cate
+----------+-------------+------+-----+---------+---------
+ Field    | Type        | Null | Key | Default | Remarks 
+----------+-------------+------+-----+---------+---------
+ id       | INT(10)     | NO   | PRI |         |         
+ cname    | VARCHAR(50) | YES  |     |         |         
+ parentid | INT(10)     | YES  |     |         |         
+ adminid  | INT(10)     | YES  |     |         |         
+ orderid  | INT(10)     | YES  |     |         |         
+ remark   | VARCHAR(50) | YES  |     |         |         
+----------+-------------+------+-----+---------+---------
+
+Table: tm_online
+----------+--------------+------+-----+---------+---------
+ Field    | Type         | Null | Key | Default | Remarks 
+----------+--------------+------+-----+---------+---------
+ uid      | INT(10)      | NO   | PRI |         |         
+ pid      | INT(10)      | YES  |     |         |         
+ lasttime | DATETIME(19) | YES  |     |         |         
+ exta     | VARCHAR(20)  | YES  |     |         |         
+ ip       | VARCHAR(20)  | YES  |     |         |         
+----------+--------------+------+-----+---------+---------
+
+Table: tm_paper
+--------------+--------------+------+-----+---------+---------
+ Field        | Type         | Null | Key | Default | Remarks 
+--------------+--------------+------+-----+---------+---------
+ id           | INT(10)      | NO   | PRI |         |         
+ paper_name   | VARCHAR(100) | YES  |     |         |         
+ adminid      | INT(10)      | YES  |     |         |         
+ status       | VARCHAR(2)   | YES  |     |         |         
+ starttime    | VARCHAR(20)  | YES  |     |         |         
+ endtime      | VARCHAR(20)  | YES  |     |         |         
+ paper_minute | INT(10)      | YES  |     |         |         
+ total_score  | INT(10)      | YES  |     |         |         
+ remark       | VARCHAR(50)  | YES  |     |         |         
+ qorder       | VARCHAR(2)   | YES  |     |         |         
+ postdate     | DATETIME(19) | YES  |     |         |         
+ show_score   | VARCHAR(20)  | YES  |     |         |         
+ isranpaper   | VARCHAR(5)   | YES  |     | 0       |         
+ departmentid | VARCHAR(50)  | YES  |     |         | 部门id    
+--------------+--------------+------+-----+---------+---------
+
+Table: tm_paper_detail
+---------+---------+------+-----+---------+---------
+ Field   | Type    | Null | Key | Default | Remarks 
+---------+---------+------+-----+---------+---------
+ pid     | INT(10) | NO   | PRI |         |         
+ qid     | INT(10) | NO   | PRI |         |         
+ sid     | INT(10) | YES  |     |         |         
+ score   | INT(10) | YES  |     |         |         
+ orderid | INT(10) | YES  |     |         |         
+---------+---------+------+-----+---------+---------
+
+Table: tm_paper_random
+-------------+----------------------+------+-----+---------+---------
+ Field       | Type                 | Null | Key | Default | Remarks 
+-------------+----------------------+------+-----+---------+---------
+ rid         | INT(10)              | NO   | PRI |         |         
+ pid         | INT(10)              | YES  |     |         |         
+ uid         | INT(10)              | YES  |     |         |         
+ paperdetail | MEDIUMTEXT(16777215) | YES  |     |         |         
+ cdate       | DATETIME(19)         | YES  |     |         |         
+-------------+----------------------+------+-----+---------+---------
+
+Table: tm_paper_section
+--------------+-------------+------+-----+---------+---------
+ Field        | Type        | Null | Key | Default | Remarks 
+--------------+-------------+------+-----+---------+---------
+ id           | INT(10)     | NO   | PRI |         |         
+ pid          | INT(10)     | YES  |     |         |         
+ section_name | VARCHAR(50) | YES  |     |         |         
+ remark       | VARCHAR(50) | YES  |     |         |         
+ per_score    | INT(10)     | YES  |     |         |         
+ quesnums     | INT(10)     | YES  |     | 0       |         
+ queslevel    | INT(10)     | YES  |     | 0       |         
+ quesdbid     | INT(10)     | YES  |     | 0       |         
+ questype     | INT(10)     | YES  |     | 0       |         
+--------------+-------------+------+-----+---------+---------
+
+Table: tm_paper_usergroup
+-------------+---------+------+-----+---------+---------
+ Field       | Type    | Null | Key | Default | Remarks 
+-------------+---------+------+-----+---------+---------
+ paperid     | INT(10) | NO   | PRI |         |         
+ usergroupid | INT(10) | NO   | PRI |         |         
+-------------+---------+------+-----+---------+---------
+
+Table: tm_plus
+--------+--------------+------+-----+---------+---------
+ Field  | Type         | Null | Key | Default | Remarks 
+--------+--------------+------+-----+---------+---------
+ id     | INT(10)      | NO   | PRI |         |         
+ pname  | VARCHAR(100) | YES  |     |         |         
+ pdesc  | VARCHAR(500) | YES  |     |         |         
+ photo  | VARCHAR(50)  | YES  |     |         |         
+ vurl   | VARCHAR(200) | YES  |     |         |         
+ status | VARCHAR(2)   | YES  |     |         |         
+ purl   | VARCHAR(100) | YES  |     |         |         
+ cdate  | DATETIME(19) | YES  |     |         |         
+--------+--------------+------+-----+---------+---------
+
+Table: tm_question
+--------------+--------------+------+-----+---------+---------
+ Field        | Type         | Null | Key | Default | Remarks 
+--------------+--------------+------+-----+---------+---------
+ id           | INT(10)      | NO   | PRI |         |         
+ dbid         | INT(10)      | YES  |     |         |         
+ qtype        | INT(10)      | YES  |     |         |         
+ qlevel       | INT(10)      | YES  |     |         |         
+ qfrom        | INT(10)      | YES  |     |         |         
+ status       | VARCHAR(2)   | YES  |     |         |         
+ content      | TEXT(65535)  | YES  |     |         |         
+ postdate     | DATETIME(19) | YES  |     |         |         
+ skey         | TEXT(65535)  | YES  |     |         |         
+ keydesc      | TEXT(65535)  | YES  |     |         |         
+ adminid      | INT(10)      | YES  |     |         |         
+ departmentid | VARCHAR(50)  | YES  |     |         | 部门id    
+--------------+--------------+------+-----+---------+---------
+
+Table: tm_question_collection
+----------+--------------+------+-----+---------+---------
+ Field    | Type         | Null | Key | Default | Remarks 
+----------+--------------+------+-----+---------+---------
+ id       | INT(10)      | NO   | PRI |         |         
+ qid      | INT(10)      | YES  |     |         |         
+ uid      | INT(10)      | YES  |     |         |         
+ cdate    | DATETIME(19) | YES  |     |         |         
+ detailid | INT(10)      | YES  |     |         |         
+----------+--------------+------+-----+---------+---------
+
+Table: tm_question_db
+--------------+--------------+------+-----+---------+---------
+ Field        | Type         | Null | Key | Default | Remarks 
+--------------+--------------+------+-----+---------+---------
+ id           | INT(10)      | NO   | PRI |         |         
+ dname        | VARCHAR(50)  | YES  |     |         |         
+ remark       | VARCHAR(50)  | YES  |     |         |         
+ adminid      | INT(10)      | YES  |     |         |         
+ cdate        | DATETIME(19) | YES  |     |         |         
+ status       | VARCHAR(2)   | YES  |     |         |         
+ departmentid | VARCHAR(50)  | YES  |     |         | 部门id    
+ checkself    | VARCHAR(3)   | NO   |     | on      |         
+--------------+--------------+------+-----+---------+---------
+
+Table: tm_question_options
+---------+--------------+------+-----+---------+---------
+ Field   | Type         | Null | Key | Default | Remarks 
+---------+--------------+------+-----+---------+---------
+ salisa  | VARCHAR(10)  | NO   | PRI |         |         
+ qid     | INT(10)      | NO   | PRI |         |         
+ soption | VARCHAR(500) | YES  |     |         |         
+---------+--------------+------+-----+---------+---------
+
+Table: tm_systips
+-------+--------------+------+-----+---------+---------
+ Field | Type         | Null | Key | Default | Remarks 
+-------+--------------+------+-----+---------+---------
+ id    | INT(10)      | NO   | PRI |         |         
+ scode | VARCHAR(50)  | YES  |     |         |         
+ sdesc | VARCHAR(200) | YES  |     |         |         
+-------+--------------+------+-----+---------+---------
+
+Table: tm_user
+----------------+---------------+------+-----+-------------------+---------
+ Field          | Type          | Null | Key | Default           | Remarks 
+----------------+---------------+------+-----+-------------------+---------
+ id             | INT(10)       | NO   | PRI |                   |         
+ userno         | VARCHAR(50)   | YES  |     |                   |         
+ username       | VARCHAR(50)   | YES  |     |                   |         
+ userpass       | VARCHAR(50)   | YES  |     |                   |         
+ photo          | VARCHAR(50)   | YES  |     |                   |         
+ status         | VARCHAR(2)    | YES  |     |                   |         
+ regdate        | DATETIME(19)  | YES  |     |                   |         
+ realname       | VARCHAR(20)   | YES  |     |                   |         
+ email          | VARCHAR(50)   | YES  |     |                   |         
+ mobi           | VARCHAR(20)   | YES  |     |                   |         
+ remark         | VARCHAR(50)   | YES  |     |                   |         
+ gid            | INT(10)       | YES  |     |                   |         
+ logintimes     | INT(10)       | YES  |     |                   |         
+ lastlogin      | DATETIME(19)  | YES  |     |                   |         
+ dept_code      | VARCHAR(200)  | YES  |     |                   |         
+ lastmodifytime | TIMESTAMP(19) | NO   |     | CURRENT_TIMESTAMP |         
+----------------+---------------+------+-----+-------------------+---------
+
+Table: tm_user_groups
+-----------+-------------+------+-----+---------+---------
+ Field     | Type        | Null | Key | Default | Remarks 
+-----------+-------------+------+-----+---------+---------
+ id        | INT(10)     | NO   | PRI |         |         
+ groupname | VARCHAR(50) | YES  |     |         |         
+ remark    | VARCHAR(50) | YES  |     |         |         
+-----------+-------------+------+-----+---------+---------
+
+Table: tm_user_import
+----------------+---------------+------+-----+-------------------+---------
+ Field          | Type          | Null | Key | Default           | Remarks 
+----------------+---------------+------+-----+-------------------+---------
+ id             | INT(10)       | NO   | PRI |                   |         
+ userno         | VARCHAR(50)   | YES  |     |                   |         
+ username       | VARCHAR(50)   | YES  |     |                   |         
+ userpass       | VARCHAR(50)   | YES  |     |                   |         
+ photo          | VARCHAR(50)   | YES  |     |                   |         
+ status         | VARCHAR(2)    | YES  |     |                   |         
+ regdate        | DATETIME(19)  | YES  |     |                   |         
+ realname       | VARCHAR(20)   | YES  |     |                   |         
+ email          | VARCHAR(50)   | YES  |     |                   |         
+ mobi           | VARCHAR(20)   | YES  |     |                   |         
+ remark         | VARCHAR(50)   | YES  |     |                   |         
+ gid            | INT(10)       | YES  |     |                   |         
+ logintimes     | INT(10)       | YES  |     |                   |         
+ lastlogin      | DATETIME(19)  | YES  |     |                   |         
+ dept_code      | INT(10)       | YES  |     |                   |         
+ lastmodifytime | TIMESTAMP(19) | NO   |     | CURRENT_TIMESTAMP |         
+----------------+---------------+------+-----+-------------------+---------
+
+Table: tm_user_usergroup
+-------------+---------------+------+-----+-------------------+---------
+ Field       | Type          | Null | Key | Default           | Remarks 
+-------------+---------------+------+-----+-------------------+---------
+ userid      | INT(10)       | NO   | PRI |                   |         
+ usergroupid | INT(10)       | NO   | PRI |                   |         
+ addtime     | TIMESTAMP(19) | NO   | PRI | CURRENT_TIMESTAMP |         
+-------------+---------------+------+-----+-------------------+---------
+

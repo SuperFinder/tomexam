@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/tomexam-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tomexam-modules" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tomexam-modules/dsmd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tomexam-modules/exammd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tomexam-modules/exammd/exam-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tomexam-modules/exammd/exam-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tomexam-modules/exammd/exam-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tomexam-modules/exammd/exam-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tomexam-parent" charset="UTF-8" />
+  </component>
+</project>

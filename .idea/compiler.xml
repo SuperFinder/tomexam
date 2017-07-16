@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="exam-model" />
+        <module name="exam-service" />
+        <module name="exam-web" />
+        <module name="tomexam-common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dsmd" target="1.8" />
+      <module name="exam-common" target="1.8" />
+      <module name="exam-model" target="1.8" />
+      <module name="exam-service" target="1.8" />
+      <module name="exam-web" target="1.8" />
+      <module name="exammd" target="1.8" />
+      <module name="tomexam-common" target="1.8" />
+      <module name="tomexam-modules" target="1.8" />
+      <module name="tomexam-parent" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

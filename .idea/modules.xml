@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/tomexam-modules/dsmd/dsmd.iml" filepath="$PROJECT_DIR$/tomexam-modules/dsmd/dsmd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomexam-modules/exammd/exam-model/exam-model.iml" filepath="$PROJECT_DIR$/tomexam-modules/exammd/exam-model/exam-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomexam-modules/exammd/exam-service/exam-service.iml" filepath="$PROJECT_DIR$/tomexam-modules/exammd/exam-service/exam-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomexam-modules/exammd/exam-web/exam-web.iml" filepath="$PROJECT_DIR$/tomexam-modules/exammd/exam-web/exam-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomexam-modules/exammd/exammd.iml" filepath="$PROJECT_DIR$/tomexam-modules/exammd/exammd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomexam.iml" filepath="$PROJECT_DIR$/tomexam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomexam-common/tomexam-common.iml" filepath="$PROJECT_DIR$/tomexam-common/tomexam-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomexam-modules/tomexam-modules.iml" filepath="$PROJECT_DIR$/tomexam-modules/tomexam-modules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomexam-parent/tomexam-parent.iml" filepath="$PROJECT_DIR$/tomexam-parent/tomexam-parent.iml" />
+    </modules>
+  </component>
+</project>
