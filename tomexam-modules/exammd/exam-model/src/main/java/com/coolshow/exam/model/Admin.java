@@ -24,12 +24,13 @@ public class Admin extends BaseAdmin<Admin> {
 
   /**
    * .
+   *
    * @param deptId 部门id
    * @return 部门列表
    */
 
   public List findByDept(String deptId) {
-    return dao.find(getSql("findByDept"), deptId);
+    return dao.find(getSql("Admin.findByDept"), deptId);
   }
 
   /**
@@ -39,6 +40,7 @@ public class Admin extends BaseAdmin<Admin> {
    * @return 某管理员
    */
   public List findById(Integer id) {
+
     return dao.find(getSql("Admin.findById"), id);
   }
 
@@ -49,7 +51,8 @@ public class Admin extends BaseAdmin<Admin> {
    * @return 某管理员
    */
   public List findByName(String userName) {
-    return dao.find(getSql("findByName"), userName, "1");
+
+    return dao.find(getSql("Admin.findByName"), userName, "1");
   }
 
   /**
@@ -60,7 +63,8 @@ public class Admin extends BaseAdmin<Admin> {
    * @return 某管理员
    */
   public List findByPass(String username, String userpass) {
-    return dao.find(getSql("findByPass"), username, userpass);
+
+    return dao.find(getSql("Admin.findByPass"), username, userpass);
   }
 
   /***
@@ -68,15 +72,11 @@ public class Admin extends BaseAdmin<Admin> {
    * @param admin
    * @return 增加管理员
    */
-  public Integer addAdmin(Admin admin) {
-
-    String sql = "insert into tm_admin(username,departmentid,userpass,status,roleid,realname,mobi,"
-        + "remark,logIntegerimes,lastlogin) values(?,?,?,?,?,?,?,?,0,"
-        + 1111111 + ")";
-    return Db.update(sql, admin.getUsername(), admin.getDepartmentid(), admin.getUserpass(),
-        admin.getStatus(), admin.getRoleid(), admin.getRealname(), admin.getMobi(),
-        admin.getRemark()
-    );
+  public Integer add(Admin admin) {
+//todo
+    return Db.update(getSql("Admin.add"), admin.getUsername(), admin.getDepartmentid(),
+        admin.getUserpass(), admin.getStatus(), admin.getRoleid(), admin.getRealname(),
+        admin.getMobi(), admin.getRemark(),"最后登录时间");
   }
 
   /***
@@ -85,51 +85,42 @@ public class Admin extends BaseAdmin<Admin> {
    * @param status 状态
    * @return 添加管理员
    */
-  public Integer addAdmin(String username, String roleid, String status) {
-    String sql = "insert into tm_admin (username,roleid,status) values (?,?,?)";
-    return Db.update(sql, username, roleid, status);
+  public Integer addInSys(String username, String roleid, String status) {
+    return Db.update(getSql("Admin.addInSys"), username, roleid, status);
   }
 
 
   /**
-   * /修改管理员，顺便改密码
-   *
-   * @return
-   * @throws Exception
+   * @param admin 管理员
+   * @return 修改管理员包括密码
    */
-  public Integer updateAdmin(Admin admin) {
-    String sql = "update tm_admin set userpass = ?, status = ?, roleid = ?, realname = ?, mobi = ? ," +
-        " remark = ? where id = ?";
-    return Db.update(sql, admin.getUserpass(), admin.getStatus(), admin.getRoleid(),
+  public Integer updateAndPass(Admin admin) {
+    return Db.update(getSql("Admin.updateAndPass"), admin.getUserpass(), admin.getStatus(),
+        admin.getRoleid(),admin.getRealname(), admin.getMobi(), admin.getRemark(), admin.getId());
+  }
+
+  /**
+   * .
+   *
+   * @param admin 管理员
+   * @return 修改管理员，不改密码
+   */
+  public Integer updateNoPass(Admin admin) {
+    return Db.update(getSql("Admin.updateNoPass"), admin.getStatus(), admin.getRoleid(),
         admin.getRealname(), admin.getMobi(), admin.getRemark(), admin.getId());
   }
 
-  /**
-   * 修改管理员，不改密码
-   *
-   * @return
-   * @throws Exception
-   */
-  public Integer updateAdminNoPassword(Admin admin) {
-    String sql = "update tm_admin set status = ?, roleid = ?, realname = ?, mobi = ? , remark = ? "
-        + "where id = ?";
-    return Db.update(sql, admin.getStatus(), admin.getRoleid(), admin.getRealname(), admin.getMobi()
-        , admin.getRemark(), admin.getId());
-  }
 
   /**
-   * 修改管理员
    *
    * @param id
    * @param status
    * @param roleid
    * @param remark
-   * @return
-   * @throws Exception
+   * @return 管理员下添加管理员
    */
-  public Integer updateShortAdmin(Integer id, String status, Integer roleid, String remark) {
-    String sql = "update tm_admin set status = ?, roleid = ?, remark = ? where id = ?";
-    return Db.update(sql, status, roleid, remark, id);
+  public Integer updateInSys(Integer id, String status, Integer roleid, String remark) {
+    return Db.update(getSql("Admin.updateInSys"), status, roleid, remark, id);
   }
 
 
@@ -141,21 +132,17 @@ public class Admin extends BaseAdmin<Admin> {
    * @throws Exception
    */
   public Integer updateLastLogin(Integer id) {
-    String sql = "update tm_admin set lastlogin = " + 1111111 +
-        ",logIntegerimes=(logIntegerimes+1) where id = ?";
-    return Db.update(sql, id);
+    //todo
+    return Db.update(getSql("Admin.updateLastLogin"),"最后登录时间", id);
   }
 
 
   /**
-   * 依照id删除管理员
-   *
-   * @param id
-   * @return
-   * @throws Exception
+   * .
+   * @param id ID
+   * @return 依照id删除管理员
    */
-  public Integer deleteAdminById(Integer id) {
-    String sql = "delete from tm_admin where id = ?";
-    return Db.update(sql, id);
+  public Integer deleteById(Integer id) {
+    return Db.update(getSql("Admin.deleteById"), id);
   }
 }

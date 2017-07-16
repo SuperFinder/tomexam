@@ -27,16 +27,38 @@ WHERE id = #(id)
 #@deleteById("tm_admin",id)
 #end
 #sql("findByDept")
-select * from tm_admin where departmentid = ?
+select * from tm_admin where departmentid=?
 #end
 #sql("findByName")
-select * from tm_admin where username = ? and status = ?
+select * from tm_admin where username=? and status=?
 #end
 #sql("findByPass")
 select * from tm_admin where username = ? and userpass = ?
 #end
+#sql("add")
+insert into tm_admin(username,departmentid,userpass,status,roleid,realname,mobi,remark,
+logIntegerimes,lastlogin)values(?,?,?,?,?,?,?,?,0,?)
+#end
+#sql("addInSys")
+insert into tm_admin (username,roleid,status) values (?,?,?)
+#end
+#sql("updateAndPass")
+update tm_admin set userpass=?,status=?,roleid=?,realname=?,mobi=?,remark=? where id=?
+#end
+#sql("updateNoPass")
+update tm_admin set status = ?, roleid = ?, realname = ?, mobi = ? , remark = ?where id = ?
+#end
+#sql("updateInSys")
+update tm_admin set status = ?, roleid = ?, remark = ? where id = ?
+#end
+#sql("updateLastLogin")
+update tm_admin set lastlogin = ?,logIntegerimes=(logIntegerimes+1) where id = ?
+#end
+#sql("deleteById")
+delete from tm_admin where id = ?
 #end
 
+#end
 -- AdminRole
 #namespace("AdminRoles")
 #sql("findAll")
@@ -48,10 +70,14 @@ select * from tm_admin where username = ? and userpass = ?
 #sql("deleteById")
 #@deleteById("tm_admin_roles",id)
 #end
+
+
 #end
 -- 权限设置
 #namespace("AdminRolesSettings")
 #sql("findAll")
 #@findAll("tm_admin_roles_settings")
 #end
+
+
 #end
