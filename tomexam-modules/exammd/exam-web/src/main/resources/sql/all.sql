@@ -10,3 +10,9 @@
 #namespace("config")
   #include("config.sql")
 #end
+#namespace("department")
+  #include("department.sql")
+#end
+#namespace("examDetail")
+  #include("examDetail.sql")
+#end

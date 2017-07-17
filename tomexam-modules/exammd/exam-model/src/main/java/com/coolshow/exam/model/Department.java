@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseDepartment;
 import com.jfinal.plugin.activerecord.Db;
 
@@ -11,7 +12,16 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Department extends BaseDepartment<Department> {
-  public static final Department dao = new Department().dao();
+  public static final Department dao = Singleton.getInstance().getSingletonObject(Department.class).dao();
+
+  /**
+   * 获取全部部门
+   *
+   * @return
+   */
+  public List findAll() {
+    return dao.find(getSql("department.findAll"));
+  }
 
   /**
    * 根据部门编码获取部门
@@ -19,20 +29,9 @@ public class Department extends BaseDepartment<Department> {
    * @param deptCode
    * @return
    */
-  public List getDepts(String deptCode) {
+  public List findByDeptCode(String deptCode) {
 
-    String sql = "select * from tm_department where dept_code = ?";
-    return dao.find(sql, deptCode);
-  }
-
-  /**
-   * 获取全部部门
-   *
-   * @return
-   */
-  public List getDepts() {
-    String sql = "select * from tm_department";
-    return dao.find(sql);
+    return dao.find(getSql("department.findByDeptCode"), deptCode);
   }
 
   /**
@@ -40,9 +39,9 @@ public class Department extends BaseDepartment<Department> {
    *
    * @return
    */
-  public List getAllDeptsNameAndCode() {
+  public List findDeptNameAndCode() {
     String sql = " select dept_name,dept_code from tm_department ";
-    return dao.find(sql);
+    return dao.find(getSql("department.findDeptNameAndCode"));
   }
 
   /**

@@ -23,7 +23,7 @@ public class Config extends BaseConfig<Config> {
 
     /**
      *.
-     * @param id
+     * @param id id
      * @return 根据id获取配置
      */
     public List findById(Integer id) {
@@ -32,40 +32,32 @@ public class Config extends BaseConfig<Config> {
 
 
     /**
-     * 根据key获取配置
-     *
-     * @param key
-     * @return
+     *.
+     * @param key key
+     * @return 返回配置
      */
     public List findByKey(String key) {
-        return dao.find(getSql("config"), key);
+        return dao.find(getSql("config.findByKey"), key);
     }
 
     /**
-     * 添加配置
-     *
-     * @param confkey
-     * @param confval
-     * @param remark
-     * @param conftype
-     * @param vals
-     * @return
+     *.
+     * @param config 配置
+     * @return 添加配置
      */
-    public Integer addConfig(String confkey, String confval, String remark, Integer conftype, String vals) {
-        String sql = "insert into tm_config(confkey,confval,remark, conftype, vals) values(?,?,?,?,?)";
-        return Db.update(sql, confkey, confval, remark, conftype, vals);
+    public Integer add(Config config) {
+        return Db.update(getSql("config.add"), config.getConfkey(), config.getConfval(),
+            config.getRemark(),config.getId(),config.getCname());
     }
 
 
     /**
-     * 根据key修改配置
-     *
-     * @param confkey
-     * @param confval
-     * @return
+     *.
+     * @param configKey 配置key
+     * @param configVal 配置值
+     * @return 根据key修改配置
      */
-    public Integer updateConfigByKey(String confval, String confkey) {
-        String sql = "update tm_config set confval=? where confkey=?";
-        return Db.update(sql, confval, confkey);
+    public Integer updateByConfigKey(String configVal, String configKey) {
+        return Db.update(getSql("config.updateByConfigKey"), configVal, configKey);
     }
 }
