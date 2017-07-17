@@ -20,6 +20,13 @@
           <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:2.6.3" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.42" />
+          <element id="archive" name="tomexam-common-1.2.jar">
+            <element id="module-output" name="tomexam-common" />
+          </element>
+          <element id="library" level="project" name="Maven: com.ibeetl:beetl:2.7.19" />
+          <element id="library" level="project" name="Maven: org.antlr:antlr4-runtime:4.2" />
+          <element id="library" level="project" name="Maven: org.abego.treelayout:org.abego.treelayout.core:1.0.1" />
+          <element id="library" level="project" name="Maven: org.antlr:antlr4-annotations:4.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

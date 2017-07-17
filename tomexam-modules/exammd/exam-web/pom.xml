@@ -25,6 +25,11 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.coolshow</groupId>
+      <artifactId>tomexam-common</artifactId>
+      <version>1.2</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>exam-web</finalName>
@@ -59,7 +64,6 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-
       <!-- 配置Tomcat插件 -->
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>

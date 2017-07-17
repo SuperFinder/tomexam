@@ -10,6 +10,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>tomexam-common</artifactId>
+  <packaging>jar</packaging>
   <dependencies>
       <dependency>
           <groupId>com.ibeetl</groupId>

@@ -18,8 +18,9 @@ public class Admin extends BaseAdmin<Admin> {
    *
    * @return 返回管理员列表
    */
-  public List getAdmins() {
-    return dao.find(getSql("Admin.findAll"));
+  public List findAll() {
+    return dao.find(getSql("admin.findAll"));
+
   }
 
   /**
@@ -30,7 +31,7 @@ public class Admin extends BaseAdmin<Admin> {
    */
 
   public List findByDept(String deptId) {
-    return dao.find(getSql("Admin.findByDept"), deptId);
+    return dao.find(getSql("admin.findByDept"),deptId);
   }
 
   /**
@@ -41,30 +42,30 @@ public class Admin extends BaseAdmin<Admin> {
    */
   public List findById(Integer id) {
 
-    return dao.find(getSql("Admin.findById"), id);
+    return dao.find(getSql("admin.findById"), id);
   }
 
   /**
    * .
    *
-   * @param userName 用户名
+   * @param username 用户名
    * @return 某管理员
    */
-  public List findByName(String userName) {
+  public List findByName(String username) {
 
-    return dao.find(getSql("Admin.findByName"), userName, "1");
+    return dao.find(getSql("admin.findByName"), username, "1");
   }
 
   /**
    * 以管理员账号密码查找管理员
    *
    * @param username 用户名
-   * @param userpass 用户密码
+   * @param password 用户密码
    * @return 某管理员
    */
-  public List findByPass(String username, String userpass) {
+  public List findByPass(String username, String password) {
 
-    return dao.find(getSql("Admin.findByPass"), username, userpass);
+    return dao.find(getSql("admin.findByPass"), username, password);
   }
 
   /***
@@ -73,20 +74,19 @@ public class Admin extends BaseAdmin<Admin> {
    * @return 增加管理员
    */
   public Integer add(Admin admin) {
-//todo
-    return Db.update(getSql("Admin.add"), admin.getUsername(), admin.getDepartmentid(),
+    return Db.update(getSql("admin.add"), admin.getUsername(), admin.getDepartmentid(),
         admin.getUserpass(), admin.getStatus(), admin.getRoleid(), admin.getRealname(),
-        admin.getMobi(), admin.getRemark(),"最后登录时间");
+        admin.getMobi(), admin.getRemark(), admin.getLastlogin());
   }
 
   /***
    * @param username 用户名
-   * @param roleid 权限id
+   * @param roleId 权限id
    * @param status 状态
    * @return 添加管理员
    */
-  public Integer addInSys(String username, String roleid, String status) {
-    return Db.update(getSql("Admin.addInSys"), username, roleid, status);
+  public Integer addInSys(String username, Integer roleId, String status) {
+    return Db.update(getSql("admin.addInSys"), username, roleId, status);
   }
 
 
@@ -95,8 +95,8 @@ public class Admin extends BaseAdmin<Admin> {
    * @return 修改管理员包括密码
    */
   public Integer updateAndPass(Admin admin) {
-    return Db.update(getSql("Admin.updateAndPass"), admin.getUserpass(), admin.getStatus(),
-        admin.getRoleid(),admin.getRealname(), admin.getMobi(), admin.getRemark(), admin.getId());
+    return Db.update(getSql("admin.updateAndPass"), admin.getUserpass(), admin.getStatus(),
+        admin.getRoleid(), admin.getRealname(), admin.getMobi(), admin.getRemark(), admin.getId());
   }
 
   /**
@@ -106,13 +106,12 @@ public class Admin extends BaseAdmin<Admin> {
    * @return 修改管理员，不改密码
    */
   public Integer updateNoPass(Admin admin) {
-    return Db.update(getSql("Admin.updateNoPass"), admin.getStatus(), admin.getRoleid(),
+    return Db.update(getSql("admin.updateNoPass"), admin.getStatus(), admin.getRoleid(),
         admin.getRealname(), admin.getMobi(), admin.getRemark(), admin.getId());
   }
 
 
   /**
-   *
    * @param id
    * @param status
    * @param roleid
@@ -120,7 +119,7 @@ public class Admin extends BaseAdmin<Admin> {
    * @return 管理员下添加管理员
    */
   public Integer updateInSys(Integer id, String status, Integer roleid, String remark) {
-    return Db.update(getSql("Admin.updateInSys"), status, roleid, remark, id);
+    return Db.update(getSql("admin.updateInSys"), status, roleid, remark, id);
   }
 
 
@@ -133,16 +132,19 @@ public class Admin extends BaseAdmin<Admin> {
    */
   public Integer updateLastLogin(Integer id) {
     //todo
-    return Db.update(getSql("Admin.updateLastLogin"),"最后登录时间", id);
+    return Db.update(getSql("admin.updateLastLogin"), "最后登录时间", id);
   }
 
 
   /**
    * .
+   *
    * @param id ID
    * @return 依照id删除管理员
    */
   public Integer deleteById(Integer id) {
-    return Db.update(getSql("Admin.deleteById"), id);
+
+
+    return Db.update(getSql("admin.deleteById"), id);
   }
 }

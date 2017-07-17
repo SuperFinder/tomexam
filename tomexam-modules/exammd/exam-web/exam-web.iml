@@ -31,5 +31,10 @@
     <orderEntry type="library" name="Maven: com.zaxxer:HikariCP:2.6.3" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.42" level="project" />
+    <orderEntry type="module" module-name="tomexam-common" />
+    <orderEntry type="library" name="Maven: com.ibeetl:beetl:2.7.19" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.abego.treelayout:org.abego.treelayout.core:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4-annotations:4.2" level="project" />
   </component>
 </module>

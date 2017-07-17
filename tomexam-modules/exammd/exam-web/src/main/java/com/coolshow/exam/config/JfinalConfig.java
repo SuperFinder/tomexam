@@ -40,7 +40,7 @@ public class JfinalConfig extends JFinalConfig {
     me.add(hp);
     ActiveRecordPlugin arp = new ActiveRecordPlugin(hp);
     arp.setBaseSqlTemplatePath(PathKit.getRootClassPath());
-    arp.addSqlTemplate("templete.sql");
+    arp.addSqlTemplate("sql/all.sql");
     _MappingKit.mapping(arp);
     me.add(arp);
   }
