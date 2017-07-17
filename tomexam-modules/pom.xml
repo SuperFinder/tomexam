@@ -15,4 +15,6 @@
     <module>exammd</module>
     <module>dsmd</module>
   </modules>
+  <dependencies>
+  </dependencies>
 </project>

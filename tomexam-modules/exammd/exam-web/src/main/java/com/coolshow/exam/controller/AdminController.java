@@ -4,18 +4,15 @@ import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.Admin;
 import com.coolshow.exam.service.AdminService;
 import com.coolshow.exam.service.impl.AdminServiceImpl;
-import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by ouzj on 2017/7/14.
  */
 public class AdminController extends Controller {
-  private final AdminService service = Singleton.getInstance().getSingletonObject(AdminServiceImpl.class);
+  private final AdminService service = new AdminServiceImpl();
 
   public void findAll() {
     List<Admin> admins = service.findAll();
