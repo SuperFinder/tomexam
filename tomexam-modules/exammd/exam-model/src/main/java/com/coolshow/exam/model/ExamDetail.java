@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseExamDetail;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class ExamDetail extends BaseExamDetail<ExamDetail> {
-    public static final ExamDetail dao = new ExamDetail().dao();
+    public static final ExamDetail dao = Singleton.getInstance().getSingletonObject(ExamDetail.class).dao();
 
     /**
      * 考试详情
