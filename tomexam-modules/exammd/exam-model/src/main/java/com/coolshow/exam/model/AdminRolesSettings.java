@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseAdminRolesSettings;
 
 import java.util.List;
@@ -9,14 +10,13 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class AdminRolesSettings extends BaseAdminRolesSettings<AdminRolesSettings> {
-	public static final AdminRolesSettings dao = new AdminRolesSettings().dao();
+	public static final AdminRolesSettings dao = Singleton.getInstance().getSingletonObject(AdminRolesSettings.class).dao();
 	/**
 	 * 获取未关联的所有的权限
 	 * @return
 	 */
-	public List getPrivelegesList() {
-		String sql = "select * from tm_admin_roles_settings order by porder asc, id asc";
-		return dao.find(sql);
+	public List findAll() {
+		return dao.find(getSql("adminRolesSettings.findAll"));
 	}
 
 	/**
@@ -24,8 +24,7 @@ public class AdminRolesSettings extends BaseAdminRolesSettings<AdminRolesSetting
 	 * @param ptype
 	 * @return
 	 */
-	public List getPrivelegesList(Integer ptype) {
-		String sql = "select * from tm_admin_roles_settings where ptype=? order by porder asc, id asc";
-		return dao.find(sql, ptype);
+	public List findByP(Integer ptype) {
+		return dao.find(getSql("adminRolesSettings.findByP"), ptype);
 	}
 }

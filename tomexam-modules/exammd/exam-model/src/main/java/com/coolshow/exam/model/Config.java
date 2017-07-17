@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseConfig;
 import com.jfinal.plugin.activerecord.Db;
 
@@ -10,27 +11,23 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Config extends BaseConfig<Config> {
-    public static final Config dao = new Config().dao();
+    public static final Config dao = Singleton.getInstance().getSingletonObject(Config.class).dao();
 
     /**
-     * 获取所有配置
-     *
-     * @return
+     *.
+     * @return 获取所有配置
      */
-    public List getConfigs() {
-        String sql = "select * from tm_config";
-        return dao.find(sql);
+    public List findAll() {
+        return dao.find(getSql("config.findAll"));
     }
 
     /**
-     * 根据id获取配置
-     *
+     *.
      * @param id
-     * @return
+     * @return 根据id获取配置
      */
-    public List getConfigById(Integer id) {
-        String sql = "select * from tm_config where id = ?";
-        return dao.find(sql, id);
+    public List findById(Integer id) {
+        return dao.find(getSql("config.findById"), id);
     }
 
 
@@ -40,9 +37,8 @@ public class Config extends BaseConfig<Config> {
      * @param key
      * @return
      */
-    public List getConfigByKey(String key) {
-        String sql = "select * from tm_config where confkey = ?";
-        return dao.find(sql, key);
+    public List findByKey(String key) {
+        return dao.find(getSql("config"), key);
     }
 
     /**

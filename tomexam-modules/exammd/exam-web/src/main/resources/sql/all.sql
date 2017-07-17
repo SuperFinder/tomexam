@@ -5,4 +5,8 @@
   #include("adminRoles.sql")
 #end
 #namespace("adminRolesSettings")
+  #include("adminRolesSettings.sql")
+#end
+#namespace("config")
+  #include("config.sql")
 #end

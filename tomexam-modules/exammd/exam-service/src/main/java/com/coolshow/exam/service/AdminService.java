@@ -9,27 +9,27 @@ import java.util.List;
  * Created by ouzj on 2017/7/7.
  */
 public interface AdminService {
-  public List findAll();
+  List findAll();
 
-  public List findById(Integer id) ;
+  List findById(Integer id);
 
-  public List findByDept(String deptId);
+  List findByDept(String deptId);
 
-  public List findByName(String username);
+  List findByName(String username);
 
-  public List findByPass(String username, String password);
+  List findByPass(String username, String password);
 
-  public Integer add(Admin admin);
+  Integer add(Admin admin);
 
-  public Integer addInSys(String username, Integer roleId, String status);
+  Integer addInSys(String username, Integer roleId, String status);
 
-  public Integer updateAndPass(Admin admin);
+  Integer updateAndPass(Admin admin);
 
-  public Integer updateNoPass(Admin admin);
+  Integer updateNoPass(Admin admin);
 
-  public Integer updateInSys(Admin admin);
+  Integer updateInSys(Admin admin);
 
-  public Integer updateLastLogin(Date lastLogin, Integer id);
+  Integer updateLastLogin(Date lastLogin, Integer id);
 
-  public Integer deleteById(Integer id);
+  Integer deleteById(Integer id);
 }

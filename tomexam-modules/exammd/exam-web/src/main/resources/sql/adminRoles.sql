@@ -1,4 +1,4 @@
-#sql("findAll")
+#sql("find")
 select * from tm_admin_roles order by id desc
 #end
 #sql("findById")
