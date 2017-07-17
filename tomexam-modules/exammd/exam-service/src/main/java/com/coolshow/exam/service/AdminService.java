@@ -11,7 +11,7 @@ import java.util.List;
 public interface AdminService {
   public List findAll();
 
-  public List findById(Integer id);
+  public List findById(Integer id) ;
 
   public List findByDept(String deptId);
 

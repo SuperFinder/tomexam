@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseAdminRoles;
 import com.jfinal.plugin.activerecord.Db;
 
@@ -12,72 +13,69 @@ import static com.jfinal.plugin.activerecord.Db.query;
  */
 @SuppressWarnings("serial")
 public class AdminRoles extends BaseAdminRoles<AdminRoles> {
-    public static final AdminRoles dao = new AdminRoles().dao();
+  public static final AdminRoles dao = Singleton.getInstance().getSingletonObject(AdminRoles.class)
+      .dao();
 
 
-    /**
-     * 依ID获取一个管理员角色
-     *
-     * @param id
-     * @return
-     */
-    public List getAdminRole(Integer id) {
+  /**
+   * .
+   * @return 获取管理员列表
+   */
+  public List findAll() {
+    return dao.find(getSql("adminRole.findAll"));
+  }
 
-        String sql = "select * from tm_admin_roles where id = ?";
+  /**
+   *.
+   * @param id
+   * @return 依ID获取一个管理员角色
+   */
+  public List findById(Integer id) {
 
-        return dao.find(sql, id);
 
-    }
+    return dao.find(getSql("adminRole.findById"), id);
 
-    /**
-     * 获取管理员列表
-     *
-     * @return
-     */
-    public List getAdminRoleList() {
-        String sql = "select * from tm_admin_roles order by id desc";
-        return dao.find(sql);
-    }
+  }
 
-    /**
-     * 添加一个管理员角色
-     *
-     * @param rolename
-     * @param roleprivelege
-     * @param remark
-     * @return
-     */
-    public Integer addAdminRole(String rolename, String roleprivelege, String remark) {
+  /**
+   * 添加一个管理员角色
+   *
+   * @param rolename
+   * @param roleprivelege
+   * @param remark
+   * @return
+   */
+  public Integer addAdminRole(String rolename, String roleprivelege, String remark) {
 
-        String sql = "insert into tm_admin_roles(rolename, roleprivelege, remark, cdate) values(?,?,?,"
-                + 1111111 + ")";
-        return Db.update(sql, rolename, roleprivelege, remark);
-    }
+    String sql = "insert into tm_admin_roles(rolename, roleprivelege, remark, cdate) values(?,?,?,"
+        + 1111111 + ")";
+    return Db.update(sql, rolename, roleprivelege, remark);
+  }
 
-    /**
-     * 依ID修改管理员角色
-     *
-     * @param id
-     * @param rolename
-     * @param roleprivelege
-     * @param remark
-     * @return
-     */
-    public Integer updateAdminRole(Integer id, String rolename, String roleprivelege, String remark) {
-        String sql = "update tm_admin_roles set rolename=?,roleprivelege=?,remark=? where id=?";
-        return Db.update(sql, rolename, roleprivelege, remark, id);
-    }
+  /**
+   * 依ID修改管理员角色
+   *
+   * @param id
+   * @param rolename
+   * @param roleprivelege
+   * @param remark
+   * @return
+   */
+  public Integer updateAdminRole(Integer id, String rolename, String roleprivelege, String remark) {
+    String sql = "update tm_admin_roles set rolename=?,roleprivelege=?,remark=? where id=?";
+    return Db.update(sql, rolename, roleprivelege, remark, id);
+  }
 
-    /**
-     * 依ID删除管理员角色
-     *
-     * @param id
-     * @return
-     */
-    public Integer deleteAdminRoleById(Integer id) {
-        String sql = "delete from tm_admin_roles where id = ?";
-        return Db.update(sql, id);
-    }
+  /**
+   * 依ID删除管理员角色
+   *
+   * @param id
+   * @return
+   */
+  public Integer deleteAdminRoleById(Integer id) {
+    String sql = "delete from tm_admin_roles where id = ?";
+    return Db.update(sql, id);
+  }
 
 
 }
