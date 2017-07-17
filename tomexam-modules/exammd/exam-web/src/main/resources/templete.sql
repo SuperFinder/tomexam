@@ -54,9 +54,6 @@ update tm_admin set status = ?, roleid = ?, remark = ? where id = ?
 #sql("updateLastLogin")
 update tm_admin set lastlogin = ?,logIntegerimes=(logIntegerimes+1) where id = ?
 #end
-#sql("deleteById")
-delete from tm_admin where id = ?
-#end
 
 #end
 -- AdminRole
@@ -67,13 +64,12 @@ delete from tm_admin where id = ?
 #sql("findById")
 #@findById("tm_admin_roles",id)
 #end
-#sql("deleteById")
-#@deleteById("tm_admin_roles",id)
+#sql("findById")
+#@findById("tm_admin_roles",id)
 #end
 
-
 #end
--- 权限设置
+
 #namespace("AdminRolesSettings")
 #sql("findAll")
 #@findAll("tm_admin_roles_settings")
