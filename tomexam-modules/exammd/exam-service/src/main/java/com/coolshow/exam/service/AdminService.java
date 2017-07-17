@@ -2,6 +2,7 @@ package com.coolshow.exam.service;
 
 import com.coolshow.exam.model.Admin;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,4 +25,11 @@ public interface AdminService {
 
   public Integer updateAndPass(Admin admin);
 
+  public Integer updateNoPass(Admin admin);
+
+  public Integer updateInSys(Admin admin);
+
+  public Integer updateLastLogin(Date lastLogin, Integer id);
+
+  public Integer deleteById(Integer id);
 }

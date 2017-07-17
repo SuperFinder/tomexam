@@ -1,8 +1,10 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseAdmin;
 import com.jfinal.plugin.activerecord.Db;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -11,7 +13,8 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Admin extends BaseAdmin<Admin> {
-  public static final Admin dao = new Admin().dao();
+//  public static final Admin dao = new Admin().dao();
+  public static final Admin dao = Singleton.getInstance().getSingletonObject(Admin.class).dao();
 
   /**
    * .
@@ -112,14 +115,11 @@ public class Admin extends BaseAdmin<Admin> {
 
 
   /**
-   * @param id
-   * @param status
-   * @param roleid
-   * @param remark
+   * @param admin 管理员
    * @return 管理员下添加管理员
    */
-  public Integer updateInSys(Integer id, String status, Integer roleid, String remark) {
-    return Db.update(getSql("admin.updateInSys"), status, roleid, remark, id);
+  public Integer updateInSys(Admin admin) {
+    return Db.update(getSql("admin.updateInSys"), admin.getStatus(), admin.getRoleid(), admin.getRemark(), admin.getId());
   }
 
 
@@ -130,9 +130,9 @@ public class Admin extends BaseAdmin<Admin> {
    * @return
    * @throws Exception
    */
-  public Integer updateLastLogin(Integer id) {
+  public Integer updateLastLogin(Date lastLogin, Integer id) {
     //todo
-    return Db.update(getSql("admin.updateLastLogin"), "最后登录时间", id);
+    return Db.update(getSql("admin.updateLastLogin"),lastLogin , id);
   }
 
 

@@ -15,7 +15,7 @@ select * from tm_admin where username = ? and userpass = ?
 #end
 #sql("add")
 insert into tm_admin(username,departmentid,userpass,status,roleid,realname,mobi,remark,
-logIntegerimes,lastlogin)values(?,?,?,?,?,?,?,?,0,?)
+logintimes,lastlogin)values(?,?,?,?,?,?,?,?,0,?)
 #end
 #sql("addInSys")
 insert into tm_admin (username,roleid,status) values (?,?,?)
@@ -30,7 +30,7 @@ update tm_admin set status = ?, roleid = ?, realname = ?, mobi = ? , remark = ?w
 update tm_admin set status = ?, roleid = ?, remark = ? where id = ?
 #end
 #sql("updateLastLogin")
-update tm_admin set lastlogin = ?,logIntegerimes=(logIntegerimes+1) where id = ?
+update tm_admin set lastlogin = ?,logintimes=(logintimes+1) where id = ?
 #end
 #sql("deleteById")
 DELETE FROM tm_admin WHERE id = ?
