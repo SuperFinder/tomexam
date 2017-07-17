@@ -1,7 +1,7 @@
 package com.coolshow.exam.config;
 
 import com.coolshow.exam.model._MappingKit;
-import com.coolshow.exam.route.AdminRoute;
+import com.coolshow.exam.route.MainRoute;
 import com.jfinal.config.*;
 import com.jfinal.kit.PathKit;
 import com.jfinal.kit.Prop;
@@ -23,7 +23,7 @@ public class JfinalConfig extends JFinalConfig {
   @Override
   public void configRoute(Routes me) {
     me.setBaseViewPath("/");
-    me.add(new AdminRoute());
+    me.add(new MainRoute());
   }
 
   @Override
