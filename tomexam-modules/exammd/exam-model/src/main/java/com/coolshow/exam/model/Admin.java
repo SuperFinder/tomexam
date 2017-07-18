@@ -133,7 +133,7 @@ public class Admin extends BaseAdmin<Admin> {
    * @throws Exception
    */
   public Integer updateLastLogin(Date lastLogin, Integer id) {
-    //todo
+    //todo lastlogin
     return Db.update(getSql("admin.updateLastLogin"), lastLogin, id);
   }
 

@@ -40,6 +40,7 @@ public class AdminRoles extends BaseAdminRoles<AdminRoles> {
    * @param adminRoles 管理权限
    * @return 添加管理权限
    */
+  //todo 系统更新时间 cDate
   public Integer add(AdminRoles adminRoles) {
 
     return Db.update(getSql("adminRoles.add"), adminRoles.getRolename(),
@@ -52,7 +53,7 @@ public class AdminRoles extends BaseAdminRoles<AdminRoles> {
    * @param adminRoles
    * @return 依ID修改管理员角色
    */
-  //todo 系统更新时间
+
   public Integer updateById(AdminRoles adminRoles) {
     return Db.update(getSql("adminRoles.updateById"), adminRoles.getRolename(),
         adminRoles.getRoleprivelege(), adminRoles.getRemark(), adminRoles.getId());

@@ -32,7 +32,6 @@ public class ExamInfo extends BaseExamInfo<ExamInfo> {
     Kv cond = Kv.by("pid", pid);
     SqlPara sp = getSqlPara("examInfo.analyze", cond);
     return dao.find(sp);
-//        return dao.find(getSql("examInfo.test"),pid);
   }
 
   //todo

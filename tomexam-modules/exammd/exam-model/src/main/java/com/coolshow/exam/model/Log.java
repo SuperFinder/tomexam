@@ -18,6 +18,6 @@ public class Log extends BaseLog<Log> {
 
   public Integer addLog(Log log) {
     return Db.update(getSql("log.add"), log.getLogtype(), log.getUsertype(), log.getUsername(),
-        log.getUid(),log.getIp(), log.getRemark());
+        log.getUid(),log.getLogtime(),log.getIp(), log.getRemark());
   }
 }

@@ -90,9 +90,9 @@ public class Paper extends BasePaper<Paper> {
    * @param id 删除试卷id
    * @return 逻辑删除试卷
    */
-  public Integer LoginDeletePaper(Integer id) {
-    String sql = "update tm_paper set status='9' where id = ?";
-    return Db.update(sql, id);
+  public Integer loginDeletePaper(Integer id) {
+    String sql = "update tm_paper set status=? where id = ?";
+    return Db.update(sql,9, id);
   }
 
   /**

@@ -15,7 +15,7 @@ public class Beetl {
     GroupTemplate groupTemplate = new GroupTemplate(resourceLoader,configuration);
     Template template  =groupTemplate.getTemplate("/template/hello.btl");
     template.binding("name","beetl");
-    String string = template.render();
+//    String str = template.render();
   }
   
 }
