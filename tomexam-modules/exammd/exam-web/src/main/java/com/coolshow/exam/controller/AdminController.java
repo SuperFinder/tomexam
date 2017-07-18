@@ -124,4 +124,6 @@ public class AdminController extends Controller {
     admin.setRemark(getPara("remark"));
     return admin;
   }
+
+
 }

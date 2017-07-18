@@ -1,6 +1,9 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseExamInfo;
+import com.jfinal.kit.Kv;
+import com.jfinal.plugin.activerecord.SqlPara;
 
 import java.util.List;
 
@@ -9,29 +12,31 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class ExamInfo extends BaseExamInfo<ExamInfo> {
-    public static final ExamInfo dao = new ExamInfo().dao();
+  public static final ExamInfo dao = Singleton.getInstance().getSingletonObject(ExamInfo.class).dao();
 
-    /**
-     * 依照试卷id，查出该试卷相关信息，分别是
-     * 试卷本体详细信息
-     * total_people  参考人数
-     * pass_num   通过人数
-     * not_pass_num  未通过人数
-     * max_score   最高分
-     * min_score   最低分
-     * avg_score  平均分
-     * pass_score   及格分数
-     *
-     * @param pid
-     * @return
-     */
-    public List getExamById(Integer pid) {
-        String sql = "select tp.*, (select count(1) from tm_exam_info ti where ti.pid=?) total_people, (select count(1) from tm_exam_info ti where ti.pid=? and ti.score>=0.6*tp.total_score) pass_num, (select count(1) from tm_exam_info ti where ti.pid=? and ti.score<0.6*tp.total_score) not_pass_num, (select max(ti.score) from tm_exam_info ti where ti.pid=?) max_score, (select min(ti.score) from tm_exam_info ti where ti.pid=?) min_score, (select avg(ti.score) from tm_exam_info ti where ti.pid=?) avg_score,(select 0.6*tp.total_score) pass_score from tm_paper tp where tp.id=?";
+  /**
+   * 依照试卷id，查出该试卷相关信息，分别是
+   * 试卷本体详细信息
+   * total_people  参考人数
+   * pass_num   通过人数
+   * not_pass_num  未通过人数
+   * max_score   最高分
+   * min_score   最低分
+   * avg_score  平均分
+   * pass_score   及格分数
+   *
+   * @param pid
+   * @return
+   */
+  public List analyze(Integer pid) {
+    Kv cond = Kv.by("pid", pid);
+    SqlPara sp = getSqlPara("examInfo.analyze", cond);
+    return dao.find(sp);
+//        return dao.find(getSql("examInfo.test"),pid);
+  }
 
-        return dao.find(sql, pid, pid, pid, pid, pid, pid, pid);
-    }
-    //todo
-    public List getPaperChart(String[] from, String[] to, String pid){
+  //todo
+  public List getPaperChart(String[] from, String[] to, String pid) {
 //        StringBuffer sb = new StringBuffer();
 //        if ((from != null) && (from.length > 0)) {
 //            for (int i = 0; i < from.length; i++) {
@@ -44,10 +49,10 @@ public class ExamInfo extends BaseExamInfo<ExamInfo> {
 //            }
 //        }
 //        return query(sb.toString());
-        return null;
-    }
-    public List HowManyPeopleExamedThePaper(Integer pid) {
-        String sql = "select count(1) t from tm_exam_info where pid = ?";
-        return dao.find(sql,pid);
-    }
+    return null;
+  }
+
+  public List examNum(Integer pid) {
+    return dao.find(getSql("examInfo.examNum"), pid);
+  }
 }

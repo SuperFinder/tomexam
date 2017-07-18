@@ -18,7 +18,6 @@ public class Admin extends BaseAdmin<Admin> {
 
   /**
    * .
-   *
    * @return 返回管理员列表
    */
   public List findAll() {
@@ -45,8 +44,9 @@ public class Admin extends BaseAdmin<Admin> {
    */
   public List findById(Integer id) {
 
-    return dao.find(getSql("admin.findById"), id);
+    return (List) super.findById(id);
   }
+
 
   /**
    * .
@@ -144,7 +144,7 @@ public class Admin extends BaseAdmin<Admin> {
    */
   public Integer deleteById(Integer id) {
 
-
     return Db.update(getSql("admin.deleteById"), id);
   }
+
 }

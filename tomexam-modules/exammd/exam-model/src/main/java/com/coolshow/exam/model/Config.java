@@ -27,7 +27,8 @@ public class Config extends BaseConfig<Config> {
      * @return 根据id获取配置
      */
     public List findById(Integer id) {
-        return dao.find(getSql("config.findById"), id);
+
+        return (List) super.findById(id);
     }
 
 
