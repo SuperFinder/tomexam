@@ -35,12 +35,12 @@ public interface NewsService {
    * .
    *
 //   * @param rows     行
-   * @param
+   * @param id id
    * @return 多选新闻
    */
 
   //todo 测试下
-  public List findNewsLists();
+  public List findNewsLists(Integer[] id);
 
   public List test(Integer pid);
 

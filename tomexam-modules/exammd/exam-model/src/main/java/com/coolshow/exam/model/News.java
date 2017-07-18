@@ -50,16 +50,15 @@ public class News extends BaseNews<News> {
    * .
    *
 //   * @param rows     行
-   * @param
+   * @param classid id
    * @return 多选新闻
    */
 
   //todo 测试下
-  public List findNewsLists() {
-    Kv cond  = Kv.by("id",1);
+  public List findNewsLists(Integer[] classid) {
+    Kv cond  = Kv.by("classid",classid);
     SqlPara sp =  getSqlPara("news.findNewsLists", cond);
     return dao.find(sp);
-//    return dao.find(getSql("news.findNewsLists"),id);
 
   }
 
