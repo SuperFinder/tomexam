@@ -47,13 +47,13 @@ public class NewsServiceImpl implements NewsService{
   /**
    * .
    *
-   * @param classIds 类别
+   * @param
 //   * @param rows     行
    * @return 多选新闻
    */
   @Override
-  public List findNewsLists(Integer classIds) {
-    return dao.findNewsLists(classIds);
+  public List findNewsLists() {
+    return dao.findNewsLists();
   }
 
   @Override

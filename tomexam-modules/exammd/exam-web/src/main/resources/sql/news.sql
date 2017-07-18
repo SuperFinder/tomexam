@@ -10,13 +10,13 @@ select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news whe
 order by id desc limit 0,?
 #end
 #sql("findNewsLists")
-select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid in
+select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid =
 (
-   #for (classIds : map)
+   #for (id : map)
       #(for.index == 0 ? "" : ", ")
-      #para(classIds)
+      ?
    #end
-  )
+)
 #end
 #sql("test")
    select * from tm_news

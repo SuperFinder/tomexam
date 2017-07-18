@@ -11,13 +11,15 @@ import com.jfinal.core.Controller;
 public class NewsController extends Controller {
   private final NewsService service = Singleton.getInstance().getSingletonObject
       (NewsServiceImpl.class);
-  public void test (){
-    Integer ints= getParaToInt("id") ;
+
+  public void test() {
+    Integer ints =1;
 //    Integer rows = 2;
     renderJson(service.findNewsLists(ints));
   }
-  public void test1(){
-    Integer id =  getParaToInt("id");
+
+  public void test1() {
+    Integer id = getParaToInt("id");
     renderJson(service.test(id));
   }
 }
