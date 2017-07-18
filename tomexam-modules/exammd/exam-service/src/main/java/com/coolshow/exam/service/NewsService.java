@@ -1,7 +1,6 @@
 package com.coolshow.exam.service;
 
 import com.coolshow.exam.model.News;
-import com.jfinal.plugin.activerecord.Db;
 
 import java.util.List;
 
@@ -35,13 +34,15 @@ public interface NewsService {
   /**
    * .
    *
-   * @param rows     行
+//   * @param rows     行
    * @param classIds 类别
    * @return 多选新闻
    */
 
   //todo 测试下
-  public List findNewsLists(Integer[] classIds, Integer rows);
+  public List findNewsLists(Integer classIds);
+
+  public List test(Integer pid);
 
   /**
    * .

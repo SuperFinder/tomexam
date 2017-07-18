@@ -2,7 +2,9 @@ package com.coolshow.exam.model;
 
 import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseNews;
+import com.jfinal.kit.Kv;
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.SqlPara;
 
 import java.util.List;
 import java.util.Map;
@@ -46,15 +48,23 @@ public class News extends BaseNews<News> {
   /**
    * .
    *
-   * @param rows     行
+//   * @param rows     行
    * @param classIds 类别
    * @return 多选新闻
    */
 
   //todo 测试下
-  public List findNewsLists(Integer[] classIds, Integer rows) {
+  public List findNewsLists(Integer classIds) {
+    Kv cond  = Kv.by("classId",classIds);
+    SqlPara sp =  getSqlPara("news.findNewsLists", cond);
+    return dao.find(sp);
+//    return dao.find(getSql("news.findNewsLists"));
+  }
 
-    return dao.find(getSql("news.findNewsLists"), classIds, rows);
+  public List test(Integer pid){
+    Kv cond  = Kv.by("id",pid);
+    SqlPara sp =  getSqlPara("news.test", cond);
+    return dao.find(sp);
   }
 
   /**

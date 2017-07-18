@@ -15,7 +15,7 @@ public class ExamInfoController extends Controller {
   private final ExamInfoService service = Singleton.getInstance().getSingletonObject
       (ExamInfoServiceImpl.class);
 
-  public void examInfo() {
+  public void analyze() {
     Integer id = getParaToInt("id");
     renderJson(service.analyze(id));
 

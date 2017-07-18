@@ -20,7 +20,7 @@ public class ExamDetailServiceImpl implements ExamDetailService {
    * @return
    */
   @Override
-  public List examDetail(Integer pid) {
-    return null;
+  public List findDetail(Integer pid) {
+    return dao.findDetail(pid);
   }
 }

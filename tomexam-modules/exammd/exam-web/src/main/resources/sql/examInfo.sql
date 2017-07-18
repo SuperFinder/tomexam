@@ -12,5 +12,5 @@ select p.*,(select count(1) from tm_exam_info ei where ei.pid =#para(pid)) total
 from
 	tm_paper p
 where
-	p.id =#(pid)
+	p.id =#para(pid)
 #end

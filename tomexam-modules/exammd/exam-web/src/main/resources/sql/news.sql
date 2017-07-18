@@ -9,13 +9,22 @@ from tm_news order by id desc limit 0,?
 select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid= ?
 order by id desc limit 0,?
 #end
--- #sql("findNewsLists")
--- select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classId in
---   #(for classId: classIds)
---     #(for.index>0?",":"") #(classId)
---   #end
---     order by id desc limit 0,?
--- #end
+#sql("findNewsLists")
+select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid in
+(
+   #for (classIds : map)
+      #(for.index == 0 ? "" : ", ")
+      #para(classIds)
+   #end
+  )
+#end
+#sql("test")
+   select * from tm_news
+   #for (id : map)
+      #(for.index == 0 ? "where" : "and")
+      #(id.key) = #para(id.value)
+   #end
+#end
 #sql("add")
 insert into tm_news(title,title_color,classid,content,status,summary,totop,visit,postdate,photo,
 author,outlink,newsfrom,adminid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)

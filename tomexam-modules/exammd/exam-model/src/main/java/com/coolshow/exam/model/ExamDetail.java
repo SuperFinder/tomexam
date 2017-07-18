@@ -10,18 +10,20 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class ExamDetail extends BaseExamDetail<ExamDetail> {
-    public static final ExamDetail dao = Singleton.getInstance().getSingletonObject(ExamDetail.class).dao();
+  public static final ExamDetail dao = Singleton.getInstance().getSingletonObject(ExamDetail.class).dao();
 
-    /**
-     * 考试详情
-     *
-     * @param pid
-     * @return
-     */
-    public List examDetail(Integer pid) {
-        String sql = "select t.*,(t.mnum/t.totalnum)*100 tpercent from (  select td.qid,count(1) totalnum,  sum(if(td.score<=0,0,1)) mnum  from tm_exam_detail td where td.pid=? group by td.qid) t";
-        return dao.find(sql, pid);
-    }
-
-
+  /**
+   * .
+   * 依据pid算出每道题统计信息
+   * qid   问题ID
+   * totalnum   所有人对当前卷当前题的总回答总次数
+   * mnum       所有人对当前卷当前题的得分总次数
+   * tpercent   本试卷本题的得分率
+   *
+   * @param pid 问题ID
+   * @return
+   */
+  public List findDetail(Integer pid) {
+    return dao.find(getSql("examDetail.findDetail"), pid);
+  }
 }
