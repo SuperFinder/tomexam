@@ -57,7 +57,7 @@ public class NewsServiceImpl implements NewsService{
   }
 
   @Override
-  public List test(Integer pid) {
+  public List test(Integer[] pid) {
     return dao.test(pid);
   }
 

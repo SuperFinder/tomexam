@@ -42,7 +42,7 @@ public interface NewsService {
   //todo 测试下
   public List findNewsLists(Integer[] id);
 
-  public List test(Integer pid);
+  public List test(Integer[] pid);
 
   /**
    * .

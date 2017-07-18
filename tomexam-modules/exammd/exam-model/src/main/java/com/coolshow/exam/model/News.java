@@ -62,7 +62,7 @@ public class News extends BaseNews<News> {
 
   }
 
-  public List test(Integer pid){
+  public List test(Integer[] pid){
     Kv cond  = Kv.by("id",pid);
     SqlPara sp =  getSqlPara("news.test", cond);
     return dao.find(sp);

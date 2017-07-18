@@ -12,7 +12,7 @@ public class NewsController extends Controller {
   private final NewsService service = Singleton.getInstance().getSingletonObject
       (NewsServiceImpl.class);
 
-  public void test() {
+  public void test1() {
     Integer ints []=new Integer[2];
     ints[0]=1;
     ints[1]=2;
@@ -20,8 +20,10 @@ public class NewsController extends Controller {
     renderJson(service.findNewsLists(ints));
   }
 
-  public void test1() {
-    Integer id = getParaToInt("id");
-    renderJson(service.test(id));
+  public void test() {
+    Integer ints []=new Integer[2];
+    ints[0]=1;
+    ints[1]=2;
+    renderJson(service.test(ints));
   }
 }

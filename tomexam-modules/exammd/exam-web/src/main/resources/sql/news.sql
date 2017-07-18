@@ -23,11 +23,11 @@ select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news whe
 #end
 
 #sql("test")
-   select * from tm_news
-   #for (id : map)
-      #(for.index == 0 ? "where" : "and")
-      #(id.key) = #para(id.value)
-   #end
+select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid in
+(
+   #para(id)
+
+   )
 #end
 
 #sql("add")
