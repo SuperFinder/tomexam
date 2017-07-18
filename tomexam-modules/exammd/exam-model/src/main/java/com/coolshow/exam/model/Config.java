@@ -28,9 +28,8 @@ public class Config extends BaseConfig<Config> {
      */
     public List findById(Integer id) {
 
-        return (List) super.findById(id);
+        return dao.find(getSql("config.findById"),id);
     }
-
 
     /**
      *.

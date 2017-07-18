@@ -13,11 +13,12 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Admin extends BaseAdmin<Admin> {
-//  public static final Admin dao = new Admin().dao();
+  //  public static final Admin dao = new Admin().dao();
   public static final Admin dao = Singleton.getInstance().getSingletonObject(Admin.class).dao();
 
   /**
    * .
+   *
    * @return 返回管理员列表
    */
   public List findAll() {
@@ -33,7 +34,8 @@ public class Admin extends BaseAdmin<Admin> {
    */
 
   public List findByDept(String deptId) {
-    return dao.find(getSql("admin.findByDept"),deptId);
+
+    return dao.find(getSql("admin.findByDept"), deptId);
   }
 
   /**
@@ -44,7 +46,7 @@ public class Admin extends BaseAdmin<Admin> {
    */
   public List findById(Integer id) {
 
-    return (List) super.findById(id);
+    return dao.find(getSql("admin.findById"), id);
   }
 
 
@@ -132,7 +134,7 @@ public class Admin extends BaseAdmin<Admin> {
    */
   public Integer updateLastLogin(Date lastLogin, Integer id) {
     //todo
-    return Db.update(getSql("admin.updateLastLogin"),lastLogin , id);
+    return Db.update(getSql("admin.updateLastLogin"), lastLogin, id);
   }
 
 

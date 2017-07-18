@@ -16,33 +16,28 @@ public class AdminController extends Controller {
   private final AdminService service = Singleton.getInstance().getSingletonObject(AdminServiceImpl.class);
 
   public void findAll() {
-    List<Admin> admins = service.findAll();
-    renderJson(admins);
+    renderJson(service.findAll());
   }
 
   public void findById() {
     Integer id = getParaToInt("id");
-    List<Admin> admins = service.findById(id);
-    renderJson(admins);
+    renderJson(service.findById(id));
   }
 
   public void findByDept() {
     String deptId = getPara("deptId");
-    List<Admin> admins = service.findByDept(deptId);
-    renderJson(admins);
+    renderJson(service.findByDept(deptId));
   }
 
   public void findByName() {
     String username = getPara("username");
-    List<Admin> admins = service.findByName(username);
-    renderJson(admins);
+    renderJson(service.findByName(username));
   }
 
   public void findByPass() {
     String username = getPara("username");
     String password = getPara("password");
-    List<Admin> admins = service.findByPass(username, password);
-    renderJson(admins);
+    renderJson(service.findByPass(username, password));
   }
 
   public void add() {
@@ -56,16 +51,14 @@ public class AdminController extends Controller {
     admin.setDepartmentid(getPara("departmentId"));
     admin.setUserpass(getPara("password"));
     admin.setRoleid(getParaToInt("roleId"));
-    Integer result = service.add(admin);
-    renderJson(result);
+    renderJson(service.add(admin));
   }
 
   public void addInSys() {
     String username = getPara("username");
     Integer roleId = getParaToInt("roleId");
     String status = getPara("status");
-    Integer result = service.addInSys(username, roleId, status);
-    renderJson(result);
+    renderJson(service.addInSys(username, roleId, status));
   }
 
   public void updateAndPass() {
@@ -77,8 +70,7 @@ public class AdminController extends Controller {
     Admin admin = update();
     admin.setUserpass(getPara("password"));
     admin.setId(getParaToInt("id"));
-    Integer result = service.updateAndPass(admin);
-    renderJson(result);
+    renderJson(service.updateAndPass(admin));
   }
 
   public void updateNoPass() {
@@ -89,8 +81,7 @@ public class AdminController extends Controller {
 //    admin.setRemark(getPara("remark"));
     Admin admin = update();
     admin.setId(getParaToInt("id"));
-    Integer result = service.updateNoPass(admin);
-    renderJson(result);
+    renderJson(service.updateNoPass(admin));
   }
 
   public void updateInSys() {
@@ -99,21 +90,18 @@ public class AdminController extends Controller {
     admin.setRoleid(getParaToInt("roleId"));
     admin.setRemark(getPara("remark"));
     admin.setId(getParaToInt("id"));
-    Integer result = service.updateInSys(admin);
-    renderJson(result);
+    renderJson(service.updateInSys(admin));
   }
 
   public void updateLastLogin() {
     Date lastLogin = getParaToDate("lastLogin");
     Integer id = getParaToInt("id");
-    Integer result = service.updateLastLogin(lastLogin, id);
-    renderJson(result);
+    renderJson(service.updateLastLogin(lastLogin, id));
   }
 
   public void deleteById() {
     Integer id = getParaToInt("id");
-    Integer result = service.deleteById(id);
-    renderJson(result);
+    renderJson(service.deleteById(id));
   }
 
   private Admin update() {

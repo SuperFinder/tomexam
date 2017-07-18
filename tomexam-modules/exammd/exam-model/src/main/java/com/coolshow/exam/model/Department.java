@@ -31,7 +31,7 @@ public class Department extends BaseDepartment<Department> {
    */
   public List findByDeptCode(String deptCode) {
 
-    return (List)super.findById(deptCode);
+    return dao.find(getSql("department.findByDeptCode"), deptCode);
   }
 
   /**
@@ -40,6 +40,8 @@ public class Department extends BaseDepartment<Department> {
    * @return
    */
   public List findDeptNameAndCode() {
+
+
     return dao.find(getSql("department.findDeptNameAndCode"));
   }
 

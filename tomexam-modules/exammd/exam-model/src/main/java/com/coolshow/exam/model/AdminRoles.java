@@ -26,12 +26,11 @@ public class AdminRoles extends BaseAdminRoles<AdminRoles> {
 
   /**
    * .
+   *
    * @return 依ID获取一个管理员角色
    */
   public List findById(Integer id) {
-
-
-    return (List) super.findById(id);
+    return dao.find(getSql("adminRoles.findById"), id);
 
   }
 

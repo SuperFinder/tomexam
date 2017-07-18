@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseLog;
 import com.jfinal.plugin.activerecord.Db;
 
@@ -8,22 +9,15 @@ import com.jfinal.plugin.activerecord.Db;
  */
 @SuppressWarnings("serial")
 public class Log extends BaseLog<Log> {
-    public static final Log dao = new Log().dao();
+  public static final Log dao = Singleton.getInstance().getSingletonObject(Log.class).dao();
 
-    /**
-     * 添加日志
-     * @param logtype
-     * @param usertype
-     * @param username
-     * @param uid
-     * @param ip
-     * @param remark
-     * @return
-     */
+  /**
+   * @param log 日志
+   * @return 添加日志
+   */
 
-    public Integer addLog(String logtype, String usertype, String username, String uid, String ip, String remark) {
-        String sql = "insert into tm_log(logtype,usertype,username,uid,logtime,ip,remark) values(?,?,?,?," +
-                11111 + ",?,?)";
-        return Db.update(sql, logtype, usertype, username, uid, ip, remark);
-    }
+  public Integer addLog(Log log) {
+    return Db.update(getSql("log.add"), log.getLogtype(), log.getUsertype(), log.getUsername(),
+        log.getUid(),log.getIp(), log.getRemark());
+  }
 }

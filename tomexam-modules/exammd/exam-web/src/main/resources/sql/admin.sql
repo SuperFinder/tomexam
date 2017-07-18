@@ -1,6 +1,9 @@
 #sql("findAll")
 SELECT * FROM tm_admin
 #end
+#sql("findById")
+select * from tm_admin WHERE id =?
+#end
 #sql("findByDept")
 select * from tm_admin where departmentid=?
 #end
