@@ -40,7 +40,7 @@ public class NewsServiceImpl implements NewsService{
    * @return 获取某类新闻
    */
   @Override
-  public List findNewsList(String classId, Integer rows) {
+  public List findNewsList(Integer classId, Integer rows) {
     return dao.findNewsList(classId,rows);
   }
 
@@ -52,7 +52,7 @@ public class NewsServiceImpl implements NewsService{
    * @return 多选新闻
    */
   @Override
-  public List findNewsLists(String[] classIds, Integer rows) {
+  public List findNewsLists(Integer[] classIds, Integer rows) {
     return dao.findNewsLists(classIds, rows);
   }
 

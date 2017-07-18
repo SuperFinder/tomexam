@@ -30,7 +30,7 @@ public interface NewsService {
    * @param classId 类别
    * @return 获取某类新闻
    */
-  public List findNewsList(String classId, Integer rows);
+  public List findNewsList(Integer classId, Integer rows);
 
   /**
    * .
@@ -41,7 +41,7 @@ public interface NewsService {
    */
 
   //todo 测试下
-  public List findNewsLists(String[] classIds, Integer rows);
+  public List findNewsLists(Integer[] classIds, Integer rows);
 
   /**
    * .

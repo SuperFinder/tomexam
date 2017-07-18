@@ -2,6 +2,7 @@ package com.coolshow.exam.route;
 
 import com.coolshow.exam.controller.AdminController;
 import com.coolshow.exam.controller.ExamInfoController;
+import com.coolshow.exam.controller.NewsController;
 import com.jfinal.config.Routes;
 
 /**
@@ -12,5 +13,6 @@ public class MainRoute extends Routes {
   public void config() {
     add("/admin", AdminController.class);
     add("/examInfo", ExamInfoController.class);
+    add("/news", NewsController.class);
   }
 }

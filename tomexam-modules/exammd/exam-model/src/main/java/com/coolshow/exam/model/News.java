@@ -39,7 +39,7 @@ public class News extends BaseNews<News> {
    * @param classId 类别
    * @return 获取某类新闻
    */
-  public List findNewsList(String classId, Integer rows) {
+  public List findNewsList(Integer classId, Integer rows) {
     return dao.find(getSql("news.findNewsList"), classId, rows);
   }
 
@@ -52,7 +52,7 @@ public class News extends BaseNews<News> {
    */
 
   //todo 测试下
-  public List findNewsLists(String[] classIds, Integer rows) {
+  public List findNewsLists(Integer[] classIds, Integer rows) {
 
     return dao.find(getSql("news.findNewsLists"), classIds, rows);
   }
