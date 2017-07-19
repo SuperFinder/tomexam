@@ -56,16 +56,18 @@ public class News extends BaseNews<News> {
 
   //todo 测试下
   public List findNewsLists(Integer[] classid) {
-    Kv cond  = Kv.by("classid",classid);
-    SqlPara sp =  getSqlPara("news.findNewsLists", cond);
+    Kv cond  = Kv.by("cond",1).set("cond1",2);
+//    Kv cond =
+    SqlPara sp =  getSqlPara("news.findNewsLists", Kv.by("cond",cond));
     return dao.find(sp);
 
   }
 
   public List test(Integer[] pid){
-    Kv cond  = Kv.by("id",pid);
+    Kv cond  = Kv.by("id",1);
     SqlPara sp =  getSqlPara("news.test", cond);
-    return dao.find(sp);
+    Kv row = Kv.by("row",3);
+    return dao.find(sp,row);
   }
 
   /**

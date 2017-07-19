@@ -15,10 +15,9 @@ order by id desc limit 0,?
 #sql("findNewsLists")
 select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid in
 (
-   #for (classid : Map)
-      #(for.index > 0 ? ", " : "") #para(classid.value)
+   #for (x : cond)
+      #(for.index > 0 ? ", " : "") #para(x.value)
    #end
-
 )
 #end
 
@@ -26,8 +25,8 @@ select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news whe
 select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid in
 (
    #para(id)
-
    )
+   order by id desc limit 0,#para(row)
 #end
 
 #sql("add")

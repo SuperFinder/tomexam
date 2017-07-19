@@ -19,12 +19,14 @@ public enum  Singleton {
     return INSTANCE;
   }
 
-  public <T> T getSingletonObject(Class<T> clazz)
+  public  <T>T getSingletonObject(Class<T> clazz)
   {
     Object t = null;
-    if (clazz != null) {
+    if (clazz != null) //有实例
+    {
       String key = clazz.getName();
-      if (this.singletonMap.containsKey(key)) {
+      if (this.singletonMap.containsKey(key)) //生成过
+      {
         t = this.singletonMap.get(key);
       }
       if (t == null) {
