@@ -34,6 +34,7 @@ public class JfinalConfig extends JFinalConfig {
   @Override
   public void configPlugin(Plugins me) {
     Prop prop = PropKit.use("jdbc.properties");
+    PropKit.use("config.properties");
     HikariCpPlugin hp = new HikariCpPlugin(prop.get("jdbcUrl"), prop.get("user"),
         prop.get("password").trim());
     hp.setDriverClass("com.mysql.jdbc.Driver");
@@ -41,6 +42,8 @@ public class JfinalConfig extends JFinalConfig {
     ActiveRecordPlugin arp = new ActiveRecordPlugin(hp);
     arp.setBaseSqlTemplatePath(PathKit.getRootClassPath());
     arp.addSqlTemplate("sql/all.sql");
+    arp.setDevMode(PropKit.getBoolean("devMode", false));
+    arp.setShowSql(PropKit.getBoolean("showSQL", false));
     _MappingKit.mapping(arp);
     me.add(arp);
   }

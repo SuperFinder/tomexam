@@ -16,7 +16,7 @@ public class NewsController extends Controller {
     Integer ints []=new Integer[2];
     ints[0]=1;
     ints[1]=2;
-    Integer rows = 2;
+    Integer rows = 4;
     renderJson(service.findNewsLists(ints,rows));
   }
 

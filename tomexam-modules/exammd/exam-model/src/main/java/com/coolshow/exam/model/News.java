@@ -57,14 +57,12 @@ public class News extends BaseNews<News> {
 
   //todo 测试下
   public List findNewsLists(Integer[] classIds,Integer row) {
-    List list = null;
+    Kv cond =  null;
     for (Integer id : classIds) {
-      list = new ArrayList();
       logger.info(id);
-      list.add(id);
+      cond =Kv.by(id,id);
     }
-    Kv cond = Kv.by(list, list);
-    SqlPara sp = getSqlPara("news.findNewsLists", Kv.by("cond", cond).set("row", row));
+    SqlPara sp = getSqlPara("news.findNewsLists", Kv.by("cond", cond).set("row", row));//cond 这里是数组
     return dao.find(sp);
 
   }
