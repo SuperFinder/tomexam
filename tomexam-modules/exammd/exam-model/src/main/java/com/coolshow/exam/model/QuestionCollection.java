@@ -1,7 +1,10 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseQuestionCollection;
+import com.jfinal.plugin.activerecord.Db;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,30 +12,24 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class QuestionCollection extends BaseQuestionCollection<QuestionCollection> {
-	public static final QuestionCollection dao = new QuestionCollection().dao();
+  public static final QuestionCollection dao = Singleton.getInstance().getSingletonObject
+      (QuestionCollection.class).dao();
 
-	public int add(int qid, int uid, int did)
-	{
+  //todo 系统时间
+  public Integer add(Integer qid, Integer uid, Date cDate, Integer did) {
 
-		return execute(sql, qid, uid, did );
-	}
+    return Db.update(getSql("questionCollection.add"), qid, uid, cDate, did);
+  }
 
-	public
-	public int deleteQc(int id)
-			throws Exception
-	{
-		String sql = "delete from tm_question_collection where id=?";
-		return execute(sql, id );
-	}
+  public List findById(Integer did) {
+    return dao.find(getSql("questionCollection.findById"), did);
+  }
 
-	public List<Map> getAllQcByUID(String uid)
-	{
-		String sql = "select tq.* from tm_question_collection tc left join tm_question tq on tc.qid = tq.id where tc.uid = ? order by tc.id desc";
-		try
-		{
-			return query(sql, new Object[] { uid });
-		} catch (Exception e) {
-			e.printStackTrace();
-		}return null;
-	}
+  public Integer delete(Integer id) {
+    return Db.update(getSql("questionCollection.delete"), id);
+  }
+
+  public List find(String uid) {
+    return dao.find(getSql("questionCollection.find"), uid);
+  }
 }
