@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BasePaper;
 import com.jfinal.plugin.activerecord.Db;
 
@@ -10,7 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Paper extends BasePaper<Paper> {
-  public static final Paper dao = new Paper().dao();
+  private static final Paper dao = Singleton.getInstance().getSingletonObject(Paper.class).dao();
 
   /**
    * .
@@ -18,15 +19,11 @@ public class Paper extends BasePaper<Paper> {
    * @param paper 试卷
    * @return 添加试卷
    */
-  public Integer addPaper(Paper paper) {
-    StringBuilder sb = new StringBuilder();
-    sb.append("insert into tm_paper(paper_name,adminid,departmentid,status,starttime,endtime")
-        .append("paper_minute,total_score,remark,qorder,postdate,show_score, isranpaper)")
-        .append(" values(?,?,?,?,?,?,?,?,?,?," + 11111 + ",?,?)");
-    return Db.update(sb.toString(), paper.getPaperName(), paper.getAdminid(),
+  public Integer add(Paper paper) {
+    return Db.update(getSql("paper.add"), paper.getPaperName(), paper.getAdminid(),
         paper.getDepartmentid(), paper.getStatus(), paper.getStarttime(), paper.getEndtime(),
         paper.getPaperMinute(), paper.getTotalScore(), paper.getRemark(), paper.getQorder(),
-        paper.getShowScore(), paper.getIsranpaper());
+        paper.getPostdate(), paper.getShowScore(), paper.getIsranpaper());
   }
 
   /**
@@ -35,27 +32,21 @@ public class Paper extends BasePaper<Paper> {
    * @param paper 试卷
    * @return 添加试卷和答案
    */
-  public Integer addPaperAndResultGenKey(Paper paper) {
-    StringBuilder sb = new StringBuilder();
-    sb.append("insert into tm_paper(paper_name,adminid,departmentid,status,starttime,endtime,")
-        .append("paper_minute,total_score,remark,qorder,postdate,show_score, isranpaper)  ").append(
-        "values(?,?,?,?,?,?,?,?,?,?," + 111111 + ",?,?)");
-    return Db.update(sb.toString(), paper.getPaperName(), paper.getAdminid(),
+  public Integer addByGen(Paper paper) {
+    return Db.update(getSql("online.addByGen"), paper.getPaperName(), paper.getAdminid(),
         paper.getDepartmentid(), paper.getStatus(), paper.getStarttime(), paper.getEndtime(),
         paper.getPaperMinute(), paper.getTotalScore(), paper.getRemark(), paper.getQorder(),
-        paper.getShowScore(), paper.getIsranpaper());
+        paper.getPostdate(), paper.getShowScore(), paper.getIsranpaper());
   }
 
   /**
    * .
    *
-   * @param id
-   * @return
-   * @throws Exception
+   * @param id id
+   * @return 根据id取试卷
    */
-  public List getPaperById(Integer id) {
-    String sql = "select * from tm_paper where id=?";
-    return dao.find(sql, id);
+  public List findById(Integer id) {
+    return dao.find(getSql("paper.findById"), id);
   }
 
   /**
@@ -64,13 +55,10 @@ public class Paper extends BasePaper<Paper> {
    * @param paper
    * @return 修改试卷
    */
-  public Integer updatePaper(Paper paper) {
-    StringBuilder sb = new StringBuilder();
-    sb.append("update tm_paper set paper_name=?,status=?,starttime=?,endtime=?,paper_minute=?,").
-        append("remark =?,qorder =?,show_score =?,isranpaper =?where id =?");
-    return Db.update(sb.toString(), paper.getPaperName(), paper.getStatus(), paper.getStarttime(),
-        paper.getEndtime(), paper.getPaperMinute(), paper.getRemark(), paper.getQorder(),
-        paper.getShowScore(), paper.getIsranpaper(), paper.getId());
+  public Integer update(Paper paper) {
+    return Db.update(getSql("paper.update"), paper.getPaperName(), paper.getStatus(),
+        paper.getStarttime(), paper.getEndtime(), paper.getPaperMinute(), paper.getRemark(),
+        paper.getQorder(), paper.getShowScore(), paper.getIsranpaper(), paper.getId());
   }
 
   /**
@@ -79,9 +67,8 @@ public class Paper extends BasePaper<Paper> {
    * @param id 删除试卷id
    * @return 删除试卷
    */
-  public Integer deletePaper(Integer id) {
-    String sql = "delete from tm_paper where id = ?";
-    return Db.update(sql, id);
+  public Integer delete(Integer id) {
+    return Db.update(getSql("paper.deletee"), id);
   }
 
   /**
@@ -90,19 +77,18 @@ public class Paper extends BasePaper<Paper> {
    * @param id 删除试卷id
    * @return 逻辑删除试卷
    */
-  public Integer loginDeletePaper(Integer id) {
-    String sql = "update tm_paper set status=? where id = ?";
-    return Db.update(sql,9, id);
+  public Integer loginDelete(Integer id) {
+    return Db.update(getSql("paper.loginDelete"), id);
   }
 
   /**
    * .
-   * @param pid
-   * @param totalscore 试卷总分
+   *
+   * @param pid        试卷id
+   * @param totalScore 试卷总分
    * @return
    */
-  public Integer updatePaperTotalScore(Integer pid, Integer totalscore) {
-    String sql = "update tm_paper set total_score=? where id=?";
-    return Db.update(sql, totalscore, pid);
+  public Integer updateScore(Integer totalScore, Integer pid) {
+    return Db.update(getSql("paper.updateScore"), totalScore, pid);
   }
 }

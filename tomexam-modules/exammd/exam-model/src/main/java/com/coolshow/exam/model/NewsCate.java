@@ -15,78 +15,64 @@ public class NewsCate extends BaseNewsCate<NewsCate> {
       .dao();
 
   /**
-   * 根据id获取新闻类别
+   * .
    *
-   * @param id
-   * @return
+   * @param id id
+   * @return 根据id获取新闻类别
    */
-  public List getNewsCategoryById(Integer id) {
-    String sql = "select * from tm_news_cate where id = ?";
-    return dao.find(sql, id);
+  public List findById(Integer id) {
+    return dao.find(getSql("newsCate.findById"), id);
   }
 
   /**
-   * 根据父id获取新闻类别
+   * .
    *
    * @param parentid
    * @return
    */
-  public List getNewsCategoryByParentId(Integer parentid) {
-    String sql = "select * from tm_news_cate where parentid = ? order by id desc";
-    return dao.find(sql, parentid);
+  public List findByParentId(Integer parentid) {
+    return dao.find(getSql("newsCate.findByParentId"), parentid);
   }
 
   /**
-   * 获取全部新闻类别
+   * .
    *
-   * @return
+   * @return 获取全部新闻类别
    */
-  public List getNewsAllCategory() {
-    String sql = "select * from tm_news_cate order by id desc";
-    return dao.find(sql, new Object[0]);
+  public List findAll() {
+    return dao.find(getSql("newsCate.findAll"));
   }
 
   /**
-   * 添加新闻类别
+   * .
    *
-   * @param cname
-   * @param parentid
-   * @param adminid
-   * @param orderid
-   * @param remark
-   * @return
+   * @param newsCate 新闻类别
+   * @return 添加
    */
-  public Integer addNewsCategory(String cname, Integer parentid, Integer adminid, Integer orderid, String remark) {
-    String sql = "insert Integero tm_news_cate(cname,parentid,adminid,orderid,remark) values(?,?,?,?,?)";
-    return Db.update(sql, cname, parentid, adminid, orderid, remark);
+  public Integer add(NewsCate newsCate) {
+    return Db.update(getSql("newsCate.add"), newsCate.getCname(), newsCate.getParentid(),
+        newsCate.getAdminid(), newsCate.getOrderid(), newsCate.getRemark());
   }
 
   /**
-   * 修改新闻类别
+   * .
    *
-   * @param id
-   * @param cname
-   * @param parentid
-   * @param adminid
-   * @param orderid
-   * @param remark
-   * @return
+   * @param newsCate 新闻类别
+   * @return 修改新闻类别
    */
-  public Integer updateNewsCategory(Integer id, String cname, Integer parentid, Integer adminid, Integer orderid, String remark) {
-    String sql = "update tm_news_cate set cname=?,parentid=?,adminid=?,orderid=?,remark=? where id=?";
-    return Db.update(sql, cname, parentid, adminid, orderid, remark, id);
+  public Integer update(NewsCate newsCate) {
+    return Db.update(getSql("newsCate.update"), newsCate.getCname(), newsCate.getParentid(),
+        newsCate.getAdminid(), newsCate.getOrderid(), newsCate.getRemark(), newsCate.getId());
   }
 
 
   /**
-   * 根据id删除新闻类别
-   *
-   * @param id
-   * @return
+   *.
+   * @param id id
+   * @return 根据id删除新闻类别
    */
-  public Integer deleteNewsCategoryById(Integer id) {
-    String sql = "delete from tm_news_cate where id = ?";
-    return Db.update(sql, id);
+  public Integer delete(Integer id) {
+    return Db.update(getSql("newsCate.delete"), id);
   }
 
 

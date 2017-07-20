@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseUserGroups;
 
 import java.util.List;
@@ -9,36 +10,35 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class UserGroups extends BaseUserGroups<UserGroups> {
-	public static final UserGroups dao = new UserGroups().dao();
+  private static final UserGroups dao = Singleton.getInstance().getSingletonObject(UserGroups.class)
+      .dao();
 
-	/**
-	 * 根据部门ID获取部门
-	 * @param groupId
-	 * @return
-	 */
-	public List getGroup(Integer groupId) {
+  /**
+   *.
+   * @param groupId 集团id
+   * @return 根据部门ID获取部门
+   */
+  public List findById(Integer groupId) {
 
-		String sql = "select * from tm_user_groups where id = ?";
-		return dao.find(sql, groupId);
-	}
+    return dao.find(getSql("userGroups.findById"), groupId);
+  }
 
-    /**
-     *获取全部集团
-     * @return
-     */
-	public List getGroup(){
-		String sql = "select * from tm_user_groups";
-		return dao.find(sql);
+  /**
+   * 获取全部集团
+   *
+   * @return
+   */
+  public List findAll() {
+    return dao.find(getSql("userGroups.findAll"));
 
-	}
+  }
 
-    /**
-     * 获取全部集团名字和编码
-     * @return
-     */
-	public List getGroupNameAndCode(){
-		String sql = "select id,groupname from tm_user_groups order by id desc";
-		return dao.find(sql);
-	}
+  /**
+   * .
+   * @return 查找集团名字和id
+   */
+  public List findIdAndName() {
+    return dao.find(getSql("userGroups.findIdAndName"));
+  }
 
 }

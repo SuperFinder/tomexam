@@ -20,7 +20,7 @@ public interface ExamInfoService {
    * @param pid
    * @return
    */
-  public List analyze(Integer pid);
+  List analyze(Integer pid);
 
-  public List examNum(Integer pid);
+  List examNum(Integer pid);
 }

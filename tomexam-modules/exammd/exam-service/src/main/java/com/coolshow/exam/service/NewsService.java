@@ -14,13 +14,13 @@ public interface NewsService {
    * @param id id
    * @return 根据id获取新闻
    */
-  public List findById(Integer id);
+  List findById(Integer id);
 
   /**
    * @param rows 行
    * @return 获取新闻
    */
-  public List findNews(Integer rows);
+  List findNews(Integer rows);
 
   /**
    * .
@@ -29,7 +29,7 @@ public interface NewsService {
    * @param classId 类别
    * @return 获取某类新闻
    */
-  public List findNewsList(Integer classId, Integer rows);
+  List findNewsList(Integer classId, Integer rows);
 
   /**
    * .
@@ -40,7 +40,7 @@ public interface NewsService {
    */
 
   //todo 测试下
-  public List findNewsLists(Integer[] id,Integer rows);
+  List findNewsLists(Integer[] id,Integer rows);
 
 
   /**
@@ -50,7 +50,7 @@ public interface NewsService {
    * @return 添加
    */
   //todo 系统更新时间 postdate
-  public Integer add(News news);
+  Integer add(News news);
 
   /**
    * .
@@ -58,7 +58,7 @@ public interface NewsService {
    * @param id id
    * @return 添加观看新闻记录
    */
-  public Integer addVisit(Integer id);
+  Integer addVisit(Integer id);
 
   /**
    * .
@@ -66,12 +66,12 @@ public interface NewsService {
    * @param news 新闻
    * @return 修改
    */
-  public Integer update(News news);
+  Integer update(News news);
 
 
   /**
    * @param id id
    * @return 根据id删除新闻
    */
-  public Integer delete(Integer id);
+  Integer delete(Integer id);
 }

@@ -12,5 +12,5 @@ public interface ExamDetailService {
    * @param pid
    * @return
    */
-  public List findDetail(Integer pid);
+  List findDetail(Integer pid);
 }

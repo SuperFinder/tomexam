@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseQuestionDb;
 import com.jfinal.plugin.activerecord.Db;
 
@@ -10,115 +11,86 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class QuestionDb extends BaseQuestionDb<QuestionDb> {
-    public static final QuestionDb dao = new QuestionDb().dao();
+  private static final QuestionDb dao = Singleton.getInstance().getSingletonObject(QuestionDb.class)
+      .dao();
 
-    /**
-     * 添加问题库
-     *
-     * @param dname
-     * @param checkself
-     * @param remark
-     * @param adminid
-     * @param status
-     * @param departmentid
-     * @return
-     */
-    public Integer addQuestDb(String dname, String checkself, String remark, Integer adminid, String status, String departmentid) {
-        String sql = "insert into tm_question_db(dname,checkself,remark,adminid,cdate,status,departmentid) values(?,?,?,?,"
-                + 11111111 + ",?,?)";
-        return Db.update(sql, dname, checkself, remark, adminid, status, departmentid);
-    }
+  /**
+   * .
+   *
+   * @param questionDb 问题库
+   * @return 添加
+   */
+
+  //todo 系统时间
+  public Integer add(QuestionDb questionDb) {
+    return Db.update(getSql("questionDb.add"), questionDb.getDname(), questionDb.getCheckself(),
+        questionDb.getRemark(), questionDb.getAdminid(), questionDb.getCdate(), questionDb.getStatus(),
+        questionDb.getDepartmentid());
+  }
 
 
-    /**
-     * 修改问题库
-     *
-     * @param id
-     * @param checkself
-     * @param dname
-     * @param remark
-     * @param status
-     * @return
-     */
-    public Integer updateQuestDb(Integer id, String checkself, String dname, String remark, String status) {
-        String sql = "update tm_question_db set dname=?,checkself=?,remark=?,status=? where id=?";
-        return Db.update(sql, dname, checkself, remark, status, id);
+  /**
+   * .
+   * @param questionDb 问题库
+   * @return 修改
+   */
+  public Integer update(QuestionDb questionDb) {
+    return Db.update(getSql("questionDb.update"), questionDb.getDname(),
+        questionDb.getCheckself(), questionDb.getRemark(), questionDb.getStatus(), questionDb.getId());
+  }
 
-    }
-
-    /**
-     * 根据ID删除问题库
-     *
-     * @param id
-     * @return
-     * @throws Exception
-     */
-    public Integer deleteQuestDbById(Integer id) {
-        String sql = "delete from tm_question_db where id = ?";
-        return Db.update(sql, id);
-    }
+  /**
+   * .
+   * @param id id
+   * @return 删除问题库
+   */
+  public Integer delete(Integer id) {
+    return Db.update(getSql("questionDb.delete"), id);
+  }
 
 
-    /**
-     * 根据状态部门和自检获取问题库列表
-     *
-     * @param status
-     * @return
-     */
+  /**
+   *.
+   * @param status 状态
+   * @return 根据状态部门和自检获取问题库列表
+   */
 
-    public List getQuestDbByCheckSelf(String status) {
-        String sql = "select * from tm_question_db where status=? and checkself='on' order by id desc";
-        return dao.find(sql, status);
+  public List DbByCheck(String status) {
+    return dao.find(getSql("questionDb.DbByCheck"), status);
 
-    }
+  }
 
-    /**
-     * 根据状态部门和自检获取问题库列表
-     *
-     * @param status
-     * @param departmentId
-     * @return
-     */
 
-    public List getQuestDbByCheckSelf(String status, String departmentId) {
-        String sql = "select * from tm_question_db where status=? and checkself='on' order by id desc";
-        return dao.find(sql, status,departmentId);
+  /**
+   *.
+   * @param status 状态
+   * @param departmentId 部门id
+   * @return 根据部门自获取问题库
+   */
+  public List DbByDept(String status, String departmentId) {
+    return dao.find(getSql("questionDb.DbByDept"), status, departmentId);
+  }
 
-    }
+  /**
+   *.
+   * @param status 状态
+   * @return 根据状态获取问题库
+   */
+  public List findDb(String status) {
+    String sql = "select * from tm_question_db where status=? order by id desc";
+    return dao.find(sql, status);
+  }
 
-    /**
-     * 根据部门自获取问题库
-     *
-     * @param status
-     * @param departmentId
-     * @return
-     */
-    public List getQuestDb(String status, String departmentId) {
-        String sql = "select * from tm_question_db where status=? and departmentid=? and checkself='on' order by id desc";
-        return dao.find(sql, status, departmentId);
-    }
-
-    /**
-     * 根据状态获取问题库
-     *
-     * @param status
-     * @return
-     */
-    public List getQuestDb(String status) {
-        String sql = "select * from tm_question_db where status=? order by id desc";
-        return dao.find(sql, status);
-    }
-
-    /**
-     * 根据id获取问题库
-     *
-     * @param id
-     * @return
-     */
-    public List getQuestDbById(Integer id) {
-        String sql = "select * from tm_question_db where id = ?";
-        return dao.find(sql, id);
-    }
+  /**
+   * 根据id获取问题库
+   *
+   * @param id
+   * @return
+   */
+  public List findDbById(Integer id) {
+    String sql = "select * from tm_question_db where id = ?";
+    return dao.find(sql, id);
+  }
 
 
 }
