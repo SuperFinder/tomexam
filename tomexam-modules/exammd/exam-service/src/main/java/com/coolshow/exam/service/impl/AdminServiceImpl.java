@@ -11,7 +11,7 @@ import java.util.List;
  * Created by ouzj on 2017/7/14.
  */
 public class AdminServiceImpl implements AdminService {
-  private final Admin dao = Singleton.getInstance().getSingletonObject(Admin.class).dao();
+  private static final Admin dao = Singleton.getInstance().getSingletonObject(Admin.class).dao();
 
   @Override
   public List findAll() {

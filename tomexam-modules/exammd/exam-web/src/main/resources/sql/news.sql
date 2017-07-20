@@ -1,3 +1,11 @@
+#define testId(idList)
+select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid in
+(
+#for (id : idList)
+      #(for.index > 0 ? ", " : "") #(id)
+   #end
+   )
+#end
 #sql("findById")
 select * from tm_news where id = ?
 #end
@@ -13,20 +21,7 @@ order by id desc limit 0,?
 #end
 
 #sql("findNewsLists")
-select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid in
-(
-   #for (x : cond)
-      #(for.index > 0 ? ", " : "") #para(x.value)
-   #end
-)
-#end
-
-#sql("test")
-select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid in
-(
-   #para(id)
-   )
-   order by id desc limit 0,#para(row)
+#@testId(idList)
 #end
 
 #sql("add")

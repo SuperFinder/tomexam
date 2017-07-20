@@ -11,7 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class AdminRoles extends BaseAdminRoles<AdminRoles> {
-  public static final AdminRoles dao = Singleton.getInstance().getSingletonObject(AdminRoles.class)
+  private static final AdminRoles dao = Singleton.getInstance().getSingletonObject(AdminRoles.class)
       .dao();
 
 

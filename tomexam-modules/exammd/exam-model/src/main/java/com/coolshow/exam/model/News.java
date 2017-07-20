@@ -7,7 +7,9 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.SqlPara;
 import org.apache.log4j.Logger;
 
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,7 +18,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class News extends BaseNews<News> {
   public static final News dao = Singleton.getInstance().getSingletonObject(News.class).dao();
-  private static Logger logger = Logger.getLogger ( News.class.getName ());
+  private static Logger logger = Logger.getLogger(News.class.getName());
 
   /**
    * .
@@ -49,29 +51,19 @@ public class News extends BaseNews<News> {
 
   /**
    * .
+   * <p>
+   * //   * @param rows     行
    *
-//   * @param rows     行
    * @param classIds id
    * @return 多选新闻
    */
 
   //todo 测试下
-  public List findNewsLists(Integer[] classIds,Integer row) {
-    Kv cond =  null;
-    for (Integer id : classIds) {
-      logger.info(id);
-      cond =Kv.by(id,id);
-    }
-    SqlPara sp = getSqlPara("news.findNewsLists", Kv.by("cond", cond).set("row", row));//cond 这里是数组
-    return dao.find(sp);
-
-  }
-
-  public List test(Integer[] pid){
-    Kv cond  = Kv.by("id",1).set("row",5);
-    SqlPara sp =  getSqlPara("news.test", cond);
+  public List findNewsLists(Integer[] classIds, Integer row) {
+    SqlPara sp = getSqlPara("news.findNewsLists", Kv.by("idList", classIds).set("row", row));//cond 这里是数组
     return dao.find(sp);
   }
+
 
   /**
    * .

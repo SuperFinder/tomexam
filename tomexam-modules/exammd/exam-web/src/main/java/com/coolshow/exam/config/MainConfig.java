@@ -13,7 +13,7 @@ import com.jfinal.template.Engine;
 /**
  * Created by ouzj on 2017/7/7.
  */
-public class JfinalConfig extends JFinalConfig {
+public class MainConfig extends JFinalConfig {
   @Override
   public void configConstant(Constants me) {
     PropKit.use("config.properties");

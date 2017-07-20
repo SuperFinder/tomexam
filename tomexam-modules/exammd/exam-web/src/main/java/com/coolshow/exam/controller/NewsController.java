@@ -20,10 +20,4 @@ public class NewsController extends Controller {
     renderJson(service.findNewsLists(ints,rows));
   }
 
-  public void test() {
-    Integer ints []=new Integer[2];
-    ints[0]=1;
-    ints[1]=2;
-    renderJson(service.test(ints));
-  }
 }

@@ -10,7 +10,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class AdminRolesSettings extends BaseAdminRolesSettings<AdminRolesSettings> {
-	public static final AdminRolesSettings dao = Singleton.getInstance().getSingletonObject(AdminRolesSettings.class).dao();
+	private static final AdminRolesSettings dao = Singleton.getInstance().getSingletonObject(AdminRolesSettings.class).dao();
 	/**
 	 * 获取未关联的所有的权限
 	 * @return

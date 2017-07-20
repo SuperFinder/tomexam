@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by BISMARCK on 17.7.17.
  */
-public class NewsServiceImpl implements NewsService{
+public class NewsServiceImpl implements NewsService {
   private static final News dao = Singleton.getInstance().getSingletonObject(News.class).dao();
 
   /**
@@ -41,25 +41,21 @@ public class NewsServiceImpl implements NewsService{
    */
   @Override
   public List findNewsList(Integer classId, Integer rows) {
-    return dao.findNewsList(classId,rows);
+    return dao.findNewsList(classId, rows);
   }
 
   /**
    * .
    *
    * @param id id
-//   * @param rows     行
+   *           //   * @param rows     行
    * @return 多选新闻
    */
   @Override
-  public List findNewsLists(Integer[] id,Integer row) {
-    return dao.findNewsLists(id,row);
+  public List findNewsLists(Integer[] id, Integer row) {
+    return dao.findNewsLists(id, row);
   }
 
-  @Override
-  public List test(Integer[] pid) {
-    return dao.test(pid);
-  }
 
   /**
    * .

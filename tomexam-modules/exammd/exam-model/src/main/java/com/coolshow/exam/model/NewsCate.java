@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseNewsCate;
 import com.jfinal.plugin.activerecord.Db;
 
@@ -10,82 +11,83 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class NewsCate extends BaseNewsCate<NewsCate> {
-    public static final NewsCate dao = new NewsCate().dao();
+  private static final NewsCate dao = Singleton.getInstance().getSingletonObject(NewsCate.class)
+      .dao();
 
-    /**
-     * 根据id获取新闻类别
-     *
-     * @param id
-     * @return
-     */
-    public List getNewsCategoryById(Integer id) {
-        String sql = "select * from tm_news_cate where id = ?";
-        return dao.find(sql, id);
-    }
+  /**
+   * 根据id获取新闻类别
+   *
+   * @param id
+   * @return
+   */
+  public List getNewsCategoryById(Integer id) {
+    String sql = "select * from tm_news_cate where id = ?";
+    return dao.find(sql, id);
+  }
 
-    /**
-     * 根据父id获取新闻类别
-     *
-     * @param parentid
-     * @return
-     */
-    public List getNewsCategoryByParentId(Integer parentid) {
-        String sql = "select * from tm_news_cate where parentid = ? order by id desc";
-        return dao.find(sql, parentid);
-    }
+  /**
+   * 根据父id获取新闻类别
+   *
+   * @param parentid
+   * @return
+   */
+  public List getNewsCategoryByParentId(Integer parentid) {
+    String sql = "select * from tm_news_cate where parentid = ? order by id desc";
+    return dao.find(sql, parentid);
+  }
 
-    /**
-     * 获取全部新闻类别
-     *
-     * @return
-     */
-    public List getNewsAllCategory() {
-        String sql = "select * from tm_news_cate order by id desc";
-        return dao.find(sql, new Object[0]);
-    }
+  /**
+   * 获取全部新闻类别
+   *
+   * @return
+   */
+  public List getNewsAllCategory() {
+    String sql = "select * from tm_news_cate order by id desc";
+    return dao.find(sql, new Object[0]);
+  }
 
-    /**
-     * 添加新闻类别
-     *
-     * @param cname
-     * @param parentid
-     * @param adminid
-     * @param orderid
-     * @param remark
-     * @return
-     */
-    public Integer addNewsCategory(String cname, Integer parentid, Integer adminid, Integer orderid, String remark) {
-        String sql = "insert Integero tm_news_cate(cname,parentid,adminid,orderid,remark) values(?,?,?,?,?)";
-        return Db.update(sql, cname, parentid, adminid, orderid, remark);
-    }
+  /**
+   * 添加新闻类别
+   *
+   * @param cname
+   * @param parentid
+   * @param adminid
+   * @param orderid
+   * @param remark
+   * @return
+   */
+  public Integer addNewsCategory(String cname, Integer parentid, Integer adminid, Integer orderid, String remark) {
+    String sql = "insert Integero tm_news_cate(cname,parentid,adminid,orderid,remark) values(?,?,?,?,?)";
+    return Db.update(sql, cname, parentid, adminid, orderid, remark);
+  }
 
-    /**
-     * 修改新闻类别
-     *
-     * @param id
-     * @param cname
-     * @param parentid
-     * @param adminid
-     * @param orderid
-     * @param remark
-     * @return
-     */
-    public Integer updateNewsCategory(Integer id, String cname, Integer parentid, Integer adminid, Integer orderid, String remark) {
-        String sql = "update tm_news_cate set cname=?,parentid=?,adminid=?,orderid=?,remark=? where id=?";
-        return Db.update(sql, cname, parentid, adminid, orderid, remark, id);
-    }
+  /**
+   * 修改新闻类别
+   *
+   * @param id
+   * @param cname
+   * @param parentid
+   * @param adminid
+   * @param orderid
+   * @param remark
+   * @return
+   */
+  public Integer updateNewsCategory(Integer id, String cname, Integer parentid, Integer adminid, Integer orderid, String remark) {
+    String sql = "update tm_news_cate set cname=?,parentid=?,adminid=?,orderid=?,remark=? where id=?";
+    return Db.update(sql, cname, parentid, adminid, orderid, remark, id);
+  }
 
 
-    /**
-     * 根据id删除新闻类别
-     *
-     * @param id
-     * @return
-     */
-    public Integer deleteNewsCategoryById(Integer id) {
-        String sql = "delete from tm_news_cate where id = ?";
-        return Db.update(sql, id);
-    }
+  /**
+   * 根据id删除新闻类别
+   *
+   * @param id
+   * @return
+   */
+  public Integer deleteNewsCategoryById(Integer id) {
+    String sql = "delete from tm_news_cate where id = ?";
+    return Db.update(sql, id);
+  }
 
 
 }
