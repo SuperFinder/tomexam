@@ -8,6 +8,6 @@ import com.coolshow.exam.model.base.BaseExamDetailT;
  */
 @SuppressWarnings("serial")
 public class ExamDetailT extends BaseExamDetailT<ExamDetailT> {
-	public static final ExamDetailT dao = Singleton.getInstance().getSingletonObject
+	private static final ExamDetailT dao = Singleton.getInstance().getSingletonObject
 			(ExamDetailT.class).dao();
 }

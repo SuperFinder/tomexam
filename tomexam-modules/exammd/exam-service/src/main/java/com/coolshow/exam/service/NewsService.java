@@ -40,7 +40,7 @@ public interface NewsService {
    */
 
   //todo 测试下
-  public List findNewsLists(Integer[] id,Integer row);
+  public List findNewsLists(Integer[] id,Integer rows);
 
 
   /**

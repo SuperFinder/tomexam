@@ -52,8 +52,8 @@ public class NewsServiceImpl implements NewsService {
    * @return 多选新闻
    */
   @Override
-  public List findNewsLists(Integer[] id, Integer row) {
-    return dao.findNewsLists(id, row);
+  public List findNewsLists(Integer[] id, Integer rows) {
+    return dao.findNewsLists(id, rows);
   }
 
 

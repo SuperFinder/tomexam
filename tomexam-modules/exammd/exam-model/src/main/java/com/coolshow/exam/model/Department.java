@@ -12,7 +12,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Department extends BaseDepartment<Department> {
-  public static final Department dao = Singleton.getInstance().getSingletonObject(Department.class).dao();
+  private static final Department dao = Singleton.getInstance().getSingletonObject(Department.class).dao();
 
   /**
    * 获取全部部门

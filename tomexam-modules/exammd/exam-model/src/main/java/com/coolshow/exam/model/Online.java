@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseOnline;
 import com.jfinal.plugin.activerecord.Db;
 
@@ -11,93 +12,93 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Online extends BaseOnline<Online> {
-    public static final Online dao = new Online().dao();
+  private static final Online dao = Singleton.getInstance().getSingletonObject(Online.class).dao();
 
 
-    /**
-     * 获取在线状态
-     *
-     * @param uid
-     * @return
-     */
-    public List getOnlineStatus(Integer uid) {
-        String sql = "select * from tm_online where uid=?";
-        return dao.find(sql, uid);
-    }
+  /**
+   * .
+   *
+   * @param uid 用户id
+   * @return 获取在线状态
+   */
+  public List getOnlineStatus(Integer uid) {
+    String sql = "select * from tm_online where uid=?";
+    return dao.find(sql, uid);
+  }
 
 
-    /**
-     * 获取试卷在线答题人数
-     *
-     * @param minute
-     * @return
-     */
-    public List getOnline(Integer minute) {
-        String sql = "select pid,count(*) total_on from tm_online where lasttime>date_add(" + 1111 +
-                ", interval ? minute) group by pid";
-        return dao.find(sql, minute);
-    }
+  /**
+   * 获取试卷在线答题人数
+   *
+   * @param minute
+   * @return
+   */
+  public List getOnline(Integer minute) {
+    String sql = "select pid,count(*) total_on from tm_online where lasttime>date_add(" + 1111 +
+        ", interval ? minute) group by pid";
+    return dao.find(sql, minute);
+  }
 
-    /**
-     * 在线的用户
-     *
-     * @param pid
-     * @param minute
-     * @return
-     */
-    public List onlineUsersOfPaper(Integer pid, Integer minute) {
-        String sql = "select t.*,tu.username,tu.realname,tu.photo from tm_online t left join tm_user tu on t.uid=tu.id where t.pid=? and t.lasttime>date_add(now(), interval ? minute)";
-        return dao.find(sql, pid, minute);
-    }
+  /**
+   * .
+   *
+   * @param pid
+   * @param minute
+   * @return 在线的用户
+   */
+  public List onlineUsersOfPaper(Integer pid, Integer minute) {
+    String sql = "select t.*,tu.username,tu.realname,tu.photo from tm_online t left join tm_user tu on t.uid=tu.id where t.pid=? and t.lasttime>date_add(now(), interval ? minute)";
+    return dao.find(sql, pid, minute);
+  }
 
-    /**
-     * 发送命令
-     *
-     * @param scmd
-     * @param uid
-     * @return
-     */
-    public int sendCommand(String scmd, int uid) {
-        String sql = "update tm_online set exta=? where uid=?";
-        return Db.update(sql, scmd, uid);
-    }
+  /**
+   * .
+   *
+   * @param scmd
+   * @param uid
+   * @return 发送命令
+   */
+  public int sendCommand(String scmd, int uid) {
+    String sql = "update tm_online set exta=? where uid=?";
+    return Db.update(sql, scmd, uid);
+  }
 
-    /**
-     * 添加在线状态
-     *
-     * @param pid
-     * @param uid
-     * @return
-     */
-    public Integer updateOnlineStatus(Integer pid, Integer uid) {
-        String sql = "update tm_online set lasttime=" + 1111 + ",pid=? where uid=?";
-        return Db.update(sql, pid, uid);
-    }
+  /**
+   * .
+   *
+   * @param pid
+   * @param uid
+   * @return 添加在线状态
+   */
+  public Integer updateOnlineStatus(Integer pid, Integer uid) {
+    String sql = "update tm_online set lasttime=" + 1111 + ",pid=? where uid=?";
+    return Db.update(sql, pid, uid);
+  }
 
-    /**
-     * 下线
-     *
-     * @param uid
-     * @return
-     * @throws Exception
-     */
-    public int offline(Integer uid) throws Exception {
-        String sql = "delete from tm_online where uid=?";
-        return Db.update(sql, uid);
-    }
+  /**
+   * 下线
+   *
+   * @param uid
+   * @return
+   * @throws Exception
+   */
+  public int offline(Integer uid) throws Exception {
+    String sql = "delete from tm_online where uid=?";
+    return Db.update(sql, uid);
+  }
 
-    /**
-     * 插入在线状态
-     *
-     * @param uid
-     * @param pid
-     * @param exta
-     * @param ip
-     * @return
-     */
-    public Integer addOnlineStatus(Integer uid, Integer pid, String exta, String ip) {
-        String sql = "insert into tm_online(uid,pid,lasttime,exta,ip) values(?,?," + 1111 + ",?,?)";
-        return Db.update(sql, uid, pid, exta, ip);
-    }
+  /**
+   * 插入在线状态
+   *
+   * @param uid
+   * @param pid
+   * @param exta
+   * @param ip
+   * @return
+   */
+  public Integer addOnlineStatus(Integer uid, Integer pid, String exta, String ip) {
+    String sql = "insert into tm_online(uid,pid,lasttime,exta,ip) values(?,?," + 1111 + ",?,?)";
+    return Db.update(sql, uid, pid, exta, ip);
+  }
 
 }

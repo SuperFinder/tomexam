@@ -17,7 +17,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class News extends BaseNews<News> {
-  public static final News dao = Singleton.getInstance().getSingletonObject(News.class).dao();
+  private static final News dao = Singleton.getInstance().getSingletonObject(News.class).dao();
   private static Logger logger = Logger.getLogger(News.class.getName());
 
   /**
@@ -59,8 +59,8 @@ public class News extends BaseNews<News> {
    */
 
   //todo 测试下
-  public List findNewsLists(Integer[] classIds, Integer row) {
-    SqlPara sp = getSqlPara("news.findNewsLists", Kv.by("idList", classIds).set("row", row));//cond 这里是数组
+  public List findNewsLists(Integer[] classIds, Integer rows) {
+    SqlPara sp = getSqlPara("news.findNewsLists", Kv.by("idList", classIds).set("rows", rows));//cond 这里是数组
     return dao.find(sp);
   }
 

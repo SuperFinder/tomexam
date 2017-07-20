@@ -1,10 +1,11 @@
-#define testId(idList)
+#define testId(idList,rows)
 select title,id,DATE_FORMAT(postdate,'%Y-%m-%d %h:%i %p') pdate from tm_news where classid in
 (
 #for (id : idList)
       #(for.index > 0 ? ", " : "") #(id)
    #end
    )
+   order by id desc limit 0,#(rows)
 #end
 #sql("findById")
 select * from tm_news where id = ?
@@ -21,7 +22,7 @@ order by id desc limit 0,?
 #end
 
 #sql("findNewsLists")
-#@testId(idList)
+#@testId(idList,rows)
 #end
 
 #sql("add")
