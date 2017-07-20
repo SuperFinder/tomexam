@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseQuestion;
 
 /**
@@ -7,5 +8,5 @@ import com.coolshow.exam.model.base.BaseQuestion;
  */
 @SuppressWarnings("serial")
 public class Question extends BaseQuestion<Question> {
-	public static final Question dao = new Question().dao();
+  public static final Question dao = Singleton.getInstance().getSingletonObject(Question.class).dao();
 }

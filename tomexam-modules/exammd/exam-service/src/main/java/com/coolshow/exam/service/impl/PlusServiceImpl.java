@@ -13,22 +13,22 @@ public class PlusServiceImpl implements PlusService {
   private static final Plus dao = Singleton.getInstance().getSingletonObject(Plus.class).dao();
 
   @Override
-  public int add(Plus plus) {
+  public Integer add(Plus plus) {
     return dao.add(plus);
   }
 
   @Override
-  public int update(Plus plus) {
+  public Integer update(Plus plus) {
     return dao.update(plus);
   }
 
   @Override
-  public List findById(int id) {
+  public List findById(Integer id) {
     return dao.findById(id);
   }
 
   @Override
-  public int delete(int id) {
+  public Integer delete(Integer id) {
     return dao.delete(id);
   }
 }

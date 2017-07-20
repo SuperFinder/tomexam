@@ -31,6 +31,7 @@ public class QuestionDb extends BaseQuestionDb<QuestionDb> {
 
   /**
    * .
+   *
    * @param questionDb 问题库
    * @return 修改
    */
@@ -41,6 +42,7 @@ public class QuestionDb extends BaseQuestionDb<QuestionDb> {
 
   /**
    * .
+   *
    * @param id id
    * @return 删除问题库
    */
@@ -50,7 +52,8 @@ public class QuestionDb extends BaseQuestionDb<QuestionDb> {
 
 
   /**
-   *.
+   * .
+   *
    * @param status 状态
    * @return 根据状态部门和自检获取问题库列表
    */
@@ -62,8 +65,9 @@ public class QuestionDb extends BaseQuestionDb<QuestionDb> {
 
 
   /**
-   *.
-   * @param status 状态
+   * .
+   *
+   * @param status       状态
    * @param departmentId 部门id
    * @return 根据部门自获取问题库
    */
@@ -72,7 +76,8 @@ public class QuestionDb extends BaseQuestionDb<QuestionDb> {
   }
 
   /**
-   *.
+   * .
+   *
    * @param status 状态
    * @return 根据状态获取问题库
    */

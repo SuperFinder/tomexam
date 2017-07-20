@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BasePaperRandom;
 
 /**
@@ -7,5 +8,5 @@ import com.coolshow.exam.model.base.BasePaperRandom;
  */
 @SuppressWarnings("serial")
 public class PaperRandom extends BasePaperRandom<PaperRandom> {
-	public static final PaperRandom dao = new PaperRandom().dao();
+  private static final PaperRandom dao = Singleton.getInstance().getSingletonObject(PaperRandom.class).dao();
 }

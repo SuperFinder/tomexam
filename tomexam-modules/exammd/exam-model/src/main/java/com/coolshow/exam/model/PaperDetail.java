@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BasePaperDetail;
 import com.jfinal.plugin.activerecord.Db;
 
@@ -10,55 +11,56 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class PaperDetail extends BasePaperDetail<PaperDetail> {
-    public static final PaperDetail dao = new PaperDetail().dao();
+  private static final PaperDetail dao = Singleton.getInstance().getSingletonObject
+      (PaperDetail.class).dao();
 
 
-    /**
-     * 根据选项获取问题
-     *
-     * @param sid
-     * @return
-     */
-    public List getQuestionListBySectionId(Integer sid) {
-        String sql = "select td.*,tq.content,tq.id,tq.qtype from tm_paper_detail td left join tm_question tq on td.qid=tq.id where td.sid=? order by td.orderid";
-        return dao.find(sql, sid);
-    }
+  /**
+   * 根据选项获取问题
+   *
+   * @param sid
+   * @return
+   */
+  public List getQuestionListBySectionId(Integer sid) {
+    String sql = "select td.*,tq.content,tq.id,tq.qtype from tm_paper_detail td left join tm_question tq on td.qid=tq.id where td.sid=? order by td.orderid";
+    return dao.find(sql, sid);
+  }
 
-    /**
-     * 添加试卷详情
-     *
-     * @param pid
-     * @param qid
-     * @param sid
-     * @param Score
-     * @param orderId
-     * @return
-     */
-    public Integer addPaperDetail(Integer pid, Integer qid, Integer sid, Integer Score, Integer orderId) {
-        String sql = "insert into tm_paper_detail(pid,qid,sid,score,orderid) values(?,?,?,?,?)";
-        return Db.update(sql, pid, qid, sid, Score, orderId);
-    }
+  /**
+   * 添加试卷详情
+   *
+   * @param pid
+   * @param qid
+   * @param sid
+   * @param Score
+   * @param orderId
+   * @return
+   */
+  public Integer addPaperDetail(Integer pid, Integer qid, Integer sid, Integer Score, Integer orderId) {
+    String sql = "insert into tm_paper_detail(pid,qid,sid,score,orderid) values(?,?,?,?,?)";
+    return Db.update(sql, pid, qid, sid, Score, orderId);
+  }
 
-    /**
-     * 根据试卷id删除试卷详情
-     *
-     * @param pid
-     * @return
-     */
-    public Integer deletePaperDetailByPaperId(Integer pid) {
-        String sql = "delete from tm_paper_detail where pid=?";
-        return Db.update(sql, pid);
-    }
+  /**
+   * 根据试卷id删除试卷详情
+   *
+   * @param pid
+   * @return
+   */
+  public Integer deletePaperDetailByPaperId(Integer pid) {
+    String sql = "delete from tm_paper_detail where pid=?";
+    return Db.update(sql, pid);
+  }
 
-    /**
-     * 根据选项id删除试卷详情
-     *
-     * @param sid
-     * @return
-     * @throws Exception
-     */
-    public Integer deletePaperDetailBySectionId(Integer sid) {
-        String sql = "delete from tm_paper_detail where sid=?";
-        return Db.update(sql, sid);
-    }
+  /**
+   * 根据选项id删除试卷详情
+   *
+   * @param sid
+   * @return
+   * @throws Exception
+   */
+  public Integer deletePaperDetailBySectionId(Integer sid) {
+    String sql = "delete from tm_paper_detail where sid=?";
+    return Db.update(sql, sid);
+  }
 }

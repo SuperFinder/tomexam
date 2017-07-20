@@ -9,11 +9,11 @@ import java.util.List;
  */
 public interface PlusService {
 
-  public int add(Plus plus);
+  Integer add(Plus plus);
 
-  public int update(Plus plus);
+  Integer update(Plus plus);
 
-  public List findById(int id);
+  List findById(Integer id);
 
-  public int delete(int id);
+  Integer delete(Integer id);
 }

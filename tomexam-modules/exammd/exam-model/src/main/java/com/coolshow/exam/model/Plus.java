@@ -13,21 +13,21 @@ import java.util.List;
 public class Plus extends BasePlus<Plus> {
   private static final Plus dao = Singleton.getInstance().getSingletonObject(Plus.class).dao();
 
-  public int add(Plus plus) {
+  public Integer add(Plus plus) {
     return Db.update(getSql("plus.add"), plus.getPname(), plus.getPdesc(), plus.getPhoto(),
         plus.getVurl(), plus.getStatus(), plus.getPurl());
   }
 
-  public int update(Plus plus) {
+  public Integer update(Plus plus) {
     return Db.update(getSql("plus.update"), plus.getPname(), plus.getPdesc(), plus.getPhoto(),
         plus.getVurl(), plus.getStatus(), plus.getPurl(), plus.getId());
   }
 
-  public List findById(int id) {
+  public List findById(Integer id) {
     return dao.find(getSql("plus.findById"), id);
   }
 
-  public int delete(int id) {
+  public Integer delete(Integer id) {
     return Db.update(getSql("plus.delete"), id);
   }
 }
