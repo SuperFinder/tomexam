@@ -48,8 +48,8 @@ public class QuestionDdServiceImpl implements QuestionDdService {
    * @return 根据状态部门和自检获取问题库列表
    */
   @Override
-  public List DbByCheck(String status) {
-    return dao.DbByCheck(status);
+  public List dbByCheck(String status) {
+    return dao.dbByCheck(status);
   }
 
   /**
@@ -60,8 +60,8 @@ public class QuestionDdServiceImpl implements QuestionDdService {
    * @return 根据部门自获取问题库
    */
   @Override
-  public List DbByDept(String status, String departmentId) {
-    return dao.DbByDept(status, departmentId);
+  public List dbByDept(String status, String departmentId) {
+    return dao.dbByDept(status, departmentId);
   }
 
   /**

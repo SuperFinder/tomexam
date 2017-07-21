@@ -35,7 +35,7 @@ public interface QuestionDdService {
    * @return 根据状态部门和自检获取问题库列表
    */
 
-  List DbByCheck(String status);
+  List dbByCheck(String status);
 
 
   /**
@@ -45,7 +45,7 @@ public interface QuestionDdService {
    * @param departmentId 部门id
    * @return 根据部门自获取问题库
    */
-  List DbByDept(String status, String departmentId);
+  List dbByDept(String status, String departmentId);
 
   /**
    * .

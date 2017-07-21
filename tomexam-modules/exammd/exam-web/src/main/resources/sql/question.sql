@@ -31,6 +31,7 @@ delete from tm_question where id = ?
 #sql("findByOther")
 select * from tm_question where dbid=? and qtype=? and qlevel=? and status='1' order by rand() limit 0,?
 #end
+
 #sql("findByOtherNew")
 select * from tm_question where dbid=? and qtype=? and qlevel=? order by rand() limit 0,?
 #end

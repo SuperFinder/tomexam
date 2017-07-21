@@ -27,3 +27,4 @@ update tm_paper set status=9 where id = ?
 
 #sql("updateScore")
 update tm_paper set total_score=? where id=?
+#end

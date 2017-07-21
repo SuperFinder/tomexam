@@ -2,7 +2,7 @@
 insert into tm_plus(pname,pdesc,photo,vurl,status,purl,cdate) values(?,?,?,?,?,?,? )
 #end
 
-#sql("add")
+#sql("update")
 update tm_plus set pname=?,pdesc=?,photo=?,vurl=?,status=?,purl=? where id=?
 #end
 

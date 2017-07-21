@@ -11,11 +11,11 @@ update tm_question_db set dname=?,checkself=?,remark=?,status=? where id=?
 delete from tm_question_db where id = ?
 #end
 
-#sql("DbByCheck")
+#sql("dbByCheck")
 select * from tm_question_db where status=? and checkself='on' order by id desc
 #end
 
-#sql("DbByDept")
+#sql("dbByDept")
 select * from tm_question_db where status=? and departmentid=? and checkself='on' order by id desc
 #end
 

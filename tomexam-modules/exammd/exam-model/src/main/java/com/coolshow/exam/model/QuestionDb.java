@@ -58,8 +58,8 @@ public class QuestionDb extends BaseQuestionDb<QuestionDb> {
    * @return 根据状态部门和自检获取问题库列表
    */
 
-  public List DbByCheck(String status) {
-    return dao.find(getSql("questionDb.DbByCheck"), status);
+  public List dbByCheck(String status) {
+    return dao.find(getSql("questionDb.dbByCheck"), status);
 
   }
 
@@ -71,8 +71,8 @@ public class QuestionDb extends BaseQuestionDb<QuestionDb> {
    * @param departmentId 部门id
    * @return 根据部门自获取问题库
    */
-  public List DbByDept(String status, String departmentId) {
-    return dao.find(getSql("questionDb.DbByDept"), status, departmentId);
+  public List dbByDept(String status, String departmentId) {
+    return dao.find(getSql("questionDb.dbByDept"), status, departmentId);
   }
 
   /**
