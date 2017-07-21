@@ -11,8 +11,8 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Question extends BaseQuestion<Question> {
-  private static final Question dao = Singleton.getInstance().getSingletonObject(Question.class).
-      dao();
+  private static final Question dao = Singleton.getInstance().getSingletonObject(Question.class)
+      .dao();
 
   //todo 系统时间
   public Integer addAndDept(Question question) {
@@ -23,6 +23,15 @@ public class Question extends BaseQuestion<Question> {
     );
   }
 
+  public List findByOther(Question question, Integer total) {
+    return dao.find(getSql("question.findByOther"), question.getDbid(), question.getQtype(), question.getQlevel()
+        , total);
+  }
+
+  public List findByOtherNew(Question question, Integer total) {
+    return dao.find(getSql("question.findByOtherNew"), question.getDbid(), question.getQtype(), question.getQlevel()
+        , total);
+  }
   /**
    * @return 查找所用启用的问题
    */
@@ -50,89 +59,12 @@ public class Question extends BaseQuestion<Question> {
   }
 
 
-  //todo 移到questionoption
-  // 删除试题，有引用的时候不能被删除
-  public Integer delete(Integer id){
-    String sql1 = "select paper_name,isranpaper from tm_paper where id in (select pid from tm_paper_detail where qid = ?)";
-      String sql = "delete from tm_question where id = ?";
-      flag = execute(sql, id);
-    }
-    return flag;
+  public Integer delete(Integer id) {
+    return Db.update(getSql("question.delete"), id);
   }
 
-  public int addOption(String salisa, int qid, String soption) throws Exception {
-    String sql = "insert into tm_question_options(salisa,qid,soption) values(?,?,?)";
-    return execute(sql, salisa, qid, soption);
+  public List findIsUse() {
+
+    return dao.find(getSql("question.findIsUse"));
   }
-
-  public int addOptions(int qid, List<String> listOfOptions) throws Exception {
-    int rows = 0;
-    char alisa = 'A';
-    if ((listOfOptions != null) && (listOfOptions.size() > 0)) {
-      for (String s : listOfOptions) {
-        String sql = "insert into tm_question_options(salisa,qid,soption) values(?,?,?)";
-        String _alisa = alisa + "";
-        rows += execute(sql.toString(), _alisa, qid, s);
-        alisa = (char) (alisa + '\001');
-      }
-    }
-    return rows;
-  }
-
-  public int deleteOptionPyQuestionId(int qid) throws Exception {
-    String sql = "delete from tm_question_options where qid=?";
-    return execute(sql, qid);
-  }
-
-  public List getOptionsByQuestionId(int qid) throws Exception {
-    String sql = "select * from tm_question_options where qid=? order by salisa asc";
-    return query(sql, qid);
-  }
-
-  public List queryQuestions(int dbid, int qtype, int qlevel, int total) throws Exception {
-    String sql = "select * from tm_question where dbid=? and qtype=? and qlevel=? and status='1' order by rand() limit 0,?";
-    return query(sql, dbid, qtype, qlevel,
-        total);
-  }
-
-  @Deprecated
-  public List queryQuestions_new(int dbid, int qtype, int qlevel, int total) throws Exception {
-    String sql = "select * from tm_question where dbid=? and qtype=? and qlevel=? order by rand() limit 0,?";
-    return query(sql, dbid, qtype, qlevel,
-        total);
-  }
-
-  public List queryQuestionOptions(List<Map> lista, List<Map> listb) throws Exception {
-    StringBuffer sb = new StringBuffer();
-    sb.append("-1,");
-    if ((lista != null) && (lista.size() > 0)) {
-      for (Map map : lista) {
-        String qid = (String) map.get("ID");
-        sb.append(qid + ",");
-      }
-    }
-    if ((listb != null) && (listb.size() > 0)) {
-      for (Map map : listb) {
-        String qid = (String) map.get("ID");
-        sb.append(qid + ",");
-      }
-    }
-    sb.append("-1");
-    String sql = "select * from tm_question_options where qid in (" + sb.toString() + ") order by qid,salisa asc";
-
-    return query(sql, new Object[0]);
-  }
-
-  public int getTotalQuestions() {
-    String sql = "select count(1) TOTAL_QUESTIONS from tm_question";
-    try {
-      Map map = uniqueQuery(sql, new Object[0]);
-      String TOTAL_QUESTIONS = String.valueOf(map.get("TOTAL_QUESTIONS"));
-      return Integer.parseInt(TOTAL_QUESTIONS);
-    } catch (Exception e1) {
-      e1.printStackTrace();
-    }
-    return -1;
-  }
-
 }

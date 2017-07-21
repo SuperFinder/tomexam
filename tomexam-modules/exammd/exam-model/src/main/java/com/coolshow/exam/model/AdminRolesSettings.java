@@ -10,21 +10,24 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class AdminRolesSettings extends BaseAdminRolesSettings<AdminRolesSettings> {
-	private static final AdminRolesSettings dao = Singleton.getInstance().getSingletonObject(AdminRolesSettings.class).dao();
-	/**
-	 * 获取未关联的所有的权限
-	 * @return
-	 */
-	public List findAll() {
-		return dao.find(getSql("adminRolesSettings.findAll"));
-	}
+  private static final AdminRolesSettings dao = Singleton.getInstance().getSingletonObject(AdminRolesSettings.class).dao();
 
-	/**
-	 * 获取权限列表
-	 * @param ptype
-	 * @return
-	 */
-	public List findByP(Integer ptype) {
-		return dao.find(getSql("adminRolesSettings.findByP"), ptype);
-	}
+  /**
+   * .
+   *
+   * @return 获取未关联的所有的权限
+   */
+  public List findAll() {
+    return dao.find(getSql("adminRolesSettings.findAll"));
+  }
+
+  /**
+   * 获取权限列表
+   *
+   * @param ptype
+   * @return
+   */
+  public List findByP(Integer ptype) {
+    return dao.find(getSql("adminRolesSettings.findByP"), ptype);
+  }
 }

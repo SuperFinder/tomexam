@@ -13,8 +13,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Admin extends BaseAdmin<Admin> {
-  private static final Admin dao = new Admin().dao();
-//  public static final Singleton dao = Singleton.getInstance();
+  private static final Admin dao = Singleton.getInstance().getSingletonObject(Admin.class).dao();
 
   /**
    * .
@@ -62,7 +61,7 @@ public class Admin extends BaseAdmin<Admin> {
   }
 
   /**
-   * 以管理员账号密码查找管理员
+   * .
    *
    * @param username 用户名
    * @param password 用户密码
@@ -73,8 +72,9 @@ public class Admin extends BaseAdmin<Admin> {
     return dao.find(getSql("admin.findByPass"), username, password);
   }
 
-  /***
-   *.
+  /**
+   * .
+   *
    * @param admin
    * @return 增加管理员
    */
@@ -121,7 +121,8 @@ public class Admin extends BaseAdmin<Admin> {
    * @return 管理员下添加管理员
    */
   public Integer updateInSys(Admin admin) {
-    return Db.update(getSql("admin.updateInSys"), admin.getStatus(), admin.getRoleid(), admin.getRemark(), admin.getId());
+    return Db.update(getSql("admin.updateInSys"), admin.getStatus(), admin.getRoleid(),
+        admin.getRemark(), admin.getId());
   }
 
 

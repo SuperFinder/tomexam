@@ -9,112 +9,112 @@ import com.jfinal.plugin.activerecord.Model;
 @SuppressWarnings({"serial", "unchecked"})
 public abstract class BaseAdmin<M extends BaseAdmin<M>> extends Model<M> implements IBean {
 
-	public M setId(Integer id) {
-		set("id", id);
-		return (M)this;
-	}
+  public Integer getId() {
+    return get("id");
+  }
 
-	public Integer getId() {
-		return get("id");
-	}
+  public M setId(Integer id) {
+    set("id", id);
+    return (M) this;
+  }
 
-	public M setUsername(String username) {
-		set("username", username);
-		return (M)this;
-	}
+  public String getUsername() {
+    return get("username");
+  }
 
-	public String getUsername() {
-		return get("username");
-	}
+  public M setUsername(String username) {
+    set("username", username);
+    return (M) this;
+  }
 
-	public M setUserpass(String userpass) {
-		set("userpass", userpass);
-		return (M)this;
-	}
+  public String getUserpass() {
+    return get("userpass");
+  }
 
-	public String getUserpass() {
-		return get("userpass");
-	}
+  public M setUserpass(String userpass) {
+    set("userpass", userpass);
+    return (M) this;
+  }
 
-	public M setStatus(String status) {
-		set("status", status);
-		return (M)this;
-	}
+  public String getStatus() {
+    return get("status");
+  }
 
-	public String getStatus() {
-		return get("status");
-	}
+  public M setStatus(String status) {
+    set("status", status);
+    return (M) this;
+  }
 
-	public M setRoleid(Integer roleid) {
-		set("roleid", roleid);
-		return (M)this;
-	}
+  public Integer getRoleid() {
+    return get("roleid");
+  }
 
-	public Integer getRoleid() {
-		return get("roleid");
-	}
+  public M setRoleid(Integer roleid) {
+    set("roleid", roleid);
+    return (M) this;
+  }
 
-	public M setRealname(String realname) {
-		set("realname", realname);
-		return (M)this;
-	}
+  public String getRealname() {
+    return get("realname");
+  }
 
-	public String getRealname() {
-		return get("realname");
-	}
+  public M setRealname(String realname) {
+    set("realname", realname);
+    return (M) this;
+  }
 
-	public M setMobi(String mobi) {
-		set("mobi", mobi);
-		return (M)this;
-	}
+  public String getMobi() {
+    return get("mobi");
+  }
 
-	public String getMobi() {
-		return get("mobi");
-	}
+  public M setMobi(String mobi) {
+    set("mobi", mobi);
+    return (M) this;
+  }
 
-	public M setRemark(String remark) {
-		set("remark", remark);
-		return (M)this;
-	}
+  public String getRemark() {
+    return get("remark");
+  }
 
-	public String getRemark() {
-		return get("remark");
-	}
+  public M setRemark(String remark) {
+    set("remark", remark);
+    return (M) this;
+  }
 
-	public M setLogintimes(Integer logintimes) {
-		set("logintimes", logintimes);
-		return (M)this;
-	}
+  public Integer getLogintimes() {
+    return get("logintimes");
+  }
 
-	public Integer getLogintimes() {
-		return get("logintimes");
-	}
+  public M setLogintimes(Integer logintimes) {
+    set("logintimes", logintimes);
+    return (M) this;
+  }
 
-	public M setLastlogin(java.util.Date lastlogin) {
-		set("lastlogin", lastlogin);
-		return (M)this;
-	}
+  public java.util.Date getLastlogin() {
+    return get("lastlogin");
+  }
 
-	public java.util.Date getLastlogin() {
-		return get("lastlogin");
-	}
+  public M setLastlogin(java.util.Date lastlogin) {
+    set("lastlogin", lastlogin);
+    return (M) this;
+  }
 
-	public M setRegdate(java.util.Date regdate) {
-		set("regdate", regdate);
-		return (M)this;
-	}
+  public java.util.Date getRegdate() {
+    return get("regdate");
+  }
 
-	public java.util.Date getRegdate() {
-		return get("regdate");
-	}
+  public M setRegdate(java.util.Date regdate) {
+    set("regdate", regdate);
+    return (M) this;
+  }
 
-	public M setDepartmentid(String departmentid) {
-		set("departmentid", departmentid);
-		return (M)this;
-	}
+  public String getDepartmentid() {
+    return get("departmentid");
+  }
 
-	public String getDepartmentid() {
-		return get("departmentid");
-	}
+  public M setDepartmentid(String departmentid) {
+    set("departmentid", departmentid);
+    return (M) this;
+  }
 
 }

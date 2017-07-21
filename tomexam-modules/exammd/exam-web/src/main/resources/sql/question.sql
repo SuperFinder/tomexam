@@ -28,14 +28,9 @@ select paper_name,isranpaper from tm_paper where id in (select pid from tm_paper
 delete from tm_question where id = ?
 #end
 
-#sql("addOption")
-insert into tm_question_options(salisa,qid,soption) values(?,?,?)
+#sql("findByOther")
+select * from tm_question where dbid=? and qtype=? and qlevel=? and status='1' order by rand() limit 0,?
 #end
-
-#sql("addOptions")//数组 news 有写
-insert into tm_question_options(salisa,qid,soption) values(?,?,?)
-#end
-
-#sql("addOptions")//数组 news 有写
-insert into tm_question_options(salisa,qid,soption) values(?,?,?)
+#sql("findByOtherNew")
+select * from tm_question where dbid=? and qtype=? and qlevel=? order by rand() limit 0,?
 #end
