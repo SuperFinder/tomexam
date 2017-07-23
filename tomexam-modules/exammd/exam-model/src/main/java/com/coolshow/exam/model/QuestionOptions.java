@@ -24,23 +24,15 @@ public class QuestionOptions extends BaseQuestionOptions<QuestionOptions> {
 
   //  Integer qid, List<String> listOfOptions
   public int[] addOptions() {
-    Integer qid = 8888;
     QuestionOptions a = new QuestionOptions();
-    a.setSalisa("A");
-    a.setQid(9999);
-    a.setSoption("tw");
+    a.setSalisa("A").setQid(9999).setSoption("tw");
     QuestionOptions b = new QuestionOptions();
-    b.setSalisa("B");
-    b.setQid(9999);
-    b.setSoption("zhengzhi");
+    b.setSalisa("B").setQid(9999).setSoption("zhengzhi");
     QuestionOptions c = new QuestionOptions();
-    c.setSalisa("C");
-    c.setQid(9999);
-    c.setSoption("huise");
+    c.setSalisa("C").setQid(9999).setSoption("huise");
     List<QuestionOptions> listOfOptions = Arrays.asList(a, b, c);
-    //String listOfOptions ="1234";
-    return Db.batch(getSql("questionOptions.addOption"), "salisa,qid,soption", listOfOptions, 5000);
-    //
+    return Db.batch(getSql("questionOptions.addOption"), "salisa,qid,soption",
+        listOfOptions, 5000);
   }
 
   public Integer delete(Integer qid) {
