@@ -12,7 +12,7 @@ public class QuestionOptionsServiceImpl implements QuestionOptionsService {
       (QuestionOptions.class).dao();
 
   @Override
-  public Integer addOptions() {
+  public int[] addOptions() {
     return dao.addOptions();
   }
 

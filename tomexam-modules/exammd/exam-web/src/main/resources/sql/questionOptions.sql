@@ -1,15 +1,5 @@
-#define addList(qid,options)
-  #for(sOption : options)
-    #(for.index == 0 ? "" : "; ")
-      insert into tm_question_options(salisa,qid,soption) values('A',#(qid),'#(sOption)')
-  #end
-#end
 #sql("addOption")
 insert into tm_question_options(salisa,qid,soption) values(?,?,?)
-#end
-
-#sql("addOptions")
-#@addList(qid,options)
 #end
 
 #sql("delete")

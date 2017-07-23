@@ -2,9 +2,7 @@ package com.coolshow.exam.model;
 
 import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseQuestionOptions;
-import com.jfinal.kit.Kv;
 import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.SqlPara;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,10 +25,21 @@ public class QuestionOptions extends BaseQuestionOptions<QuestionOptions> {
   //  Integer qid, List<String> listOfOptions
   public int[] addOptions() {
     Integer qid = 8888;
-    List<String> listOfOptions = Arrays.asList("aaa", "bbb", "ccc", "ddd");
+    QuestionOptions a = new QuestionOptions();
+    a.setSalisa("A");
+    a.setQid(9999);
+    a.setSoption("tw");
+    QuestionOptions b = new QuestionOptions();
+    b.setSalisa("B");
+    b.setQid(9999);
+    b.setSoption("zhengzhi");
+    QuestionOptions c = new QuestionOptions();
+    c.setSalisa("C");
+    c.setQid(9999);
+    c.setSoption("huise");
+    List<QuestionOptions> listOfOptions = Arrays.asList(a, b, c);
     //String listOfOptions ="1234";
-    SqlPara sqlPara = Db.getSqlPara("questionOptions.addOptions", Kv.by("qid", qid).set("options", listOfOptions));
-    return Db.batch(get("questionOptions.addOptions"), 12);
+    return Db.batch(getSql("questionOptions.addOption"), "salisa,qid,soption", listOfOptions, 5000);
     //
   }
 
