@@ -4,7 +4,6 @@ import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseQuestionOptions;
 import com.jfinal.plugin.activerecord.Db;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -23,16 +22,16 @@ public class QuestionOptions extends BaseQuestionOptions<QuestionOptions> {
   }
 
   //  Integer qid, List<String> listOfOptions
-  public int[] addOptions() {
-    QuestionOptions a = new QuestionOptions();
-    a.setSalisa("A").setQid(9999).setSoption("tw");
-    QuestionOptions b = new QuestionOptions();
-    b.setSalisa("B").setQid(9999).setSoption("zhengzhi");
-    QuestionOptions c = new QuestionOptions();
-    c.setSalisa("C").setQid(9999).setSoption("huise");
-    List<QuestionOptions> listOfOptions = Arrays.asList(a, b, c);
-    return Db.batch(getSql("questionOptions.addOption"), "salisa,qid,soption",
-        listOfOptions, 5000);
+  public int[] addOptions(Object[][][] obj) {
+//    QuestionOptions a = new QuestionOptions();
+//    a.setSalisa("A").setQid(9999).setSoption("tw");
+//    QuestionOptions b = new QuestionOptions();
+//    b.setSalisa("B").setQid(9999).setSoption("zhengzhi");
+//    QuestionOptions c = new QuestionOptions();
+//    c.setSalisa("C").setQid(9999).setSoption("huise");
+//    List<QuestionOptions> listOfOptions = Arrays.asList(a, b, c);
+    return Db.batch(getSql("questionOptions.addOption"),
+        obj, 5000);
   }
 
   public Integer delete(Integer qid) {

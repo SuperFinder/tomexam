@@ -9,6 +9,8 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.hikaricp.HikariCpPlugin;
 import com.jfinal.template.Engine;
+import org.beetl.core.GroupTemplate;
+import org.beetl.ext.jfinal3.JFinal3BeetlRenderFactory;
 
 /**
  * Created by ouzj on 2017/7/7.
@@ -18,6 +20,11 @@ public class MainConfig extends JFinalConfig {
   public void configConstant(Constants me) {
     PropKit.use("config.properties");
     me.setDevMode(PropKit.getBoolean("devMode", false));
+    //配置beetl模板
+    JFinal3BeetlRenderFactory rf = new JFinal3BeetlRenderFactory();
+    rf.config();
+    me.setRenderFactory(rf);
+    GroupTemplate gt = rf.groupTemplate;
   }
 
   @Override

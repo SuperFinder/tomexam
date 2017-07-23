@@ -1,5 +1,6 @@
 package com.coolshow.exam.model;
 
+import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseUserImport;
 
 /**
@@ -7,5 +8,6 @@ import com.coolshow.exam.model.base.BaseUserImport;
  */
 @SuppressWarnings("serial")
 public class UserImport extends BaseUserImport<UserImport> {
-	public static final UserImport dao = new UserImport().dao();
+  public static final UserImport dao = Singleton.getInstance().getSingletonObject(UserImport.class)
+      .dao();
 }
