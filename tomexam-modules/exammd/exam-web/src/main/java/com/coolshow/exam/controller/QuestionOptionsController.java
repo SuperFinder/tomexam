@@ -9,8 +9,8 @@ public class QuestionOptionsController extends Controller {
   private final QuestionOptionsService service = Singleton.getInstance().getSingletonObject
       (QuestionOptionsServiceImpl.class);
 
-  public void addOptions() {
-    renderJson(service.addOptions());
+  public void addOptions(Object[][][] obj) {
+    renderJson(service.addOptions(obj));
   }
 
   public void addOption() {

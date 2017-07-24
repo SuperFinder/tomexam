@@ -12,8 +12,8 @@ public class QuestionOptionsServiceImpl implements QuestionOptionsService {
       (QuestionOptions.class).dao();
 
   @Override
-  public int[] addOptions() {
-    return dao.addOptions();
+  public int[] addOptions(Object[][][] obj) {
+    return dao.addOptions(obj);
   }
 
   @Override

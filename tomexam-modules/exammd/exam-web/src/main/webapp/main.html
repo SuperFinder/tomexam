@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exam考试在线系统首页</title>
+    <style>
+        html {
+            overflow-x: hidden;
+        }
+
+        a:hover {
+            text-decoration: none
+        }
+
+        .aswitch1 {
+            background: url('skins/images/switch.png') no-repeat;
+            width: 8px;
+            height: 50px;
+            margin-left: 1px;
+            display: block;
+            text-decoration: none
+        }
+
+        .aswitch2 {
+            background: url('skins/images/switch.png') no-repeat;
+            width: 8px;
+            height: 50px;
+            margin-left: 1px;
+            display: block;
+            background-position: right;
+            text-decoration: none
+        }
+    </style>
+    <script>
+
+        function switchbar() {
+            var mainframe = parent.document.getElementById("mainframe");
+            var aswitcher = document.getElementById("aswitcher");
+            var cols = "" + mainframe.cols;
+            if ("200,10,*" == cols) {
+                mainframe.cols = "0,10,*";
+                aswitcher.className = "aswitch2";
+            } else {
+                mainframe.cols = "200,10,*";
+                aswitcher.className = "aswitch1";
+            }
+        }
+
+    </script>
+</head>
+<body class="menubody">
+
+<table border="0" cellpadding="0" cellspacing="0" height="100%">
+    <tr>
+        <td valign="middle">
+            <a href="javascript:" onclick="switchbar()" id="aswitcher" class="aswitch1" title="切换">&nbsp;</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
