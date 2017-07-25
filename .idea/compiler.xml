@@ -13,7 +13,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ds-common" target="1.8" />
+      <module name="ds-handlr" target="1.8" />
+      <module name="ds-model" target="1.8" />
       <module name="dsmd" target="1.8" />
+      <module name="dsyn-model" target="1.8" />
       <module name="exam-common" target="1.8" />
       <module name="exam-model" target="1.8" />
       <module name="exam-service" target="1.8" />

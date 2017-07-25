@@ -16,6 +16,14 @@
         <option value="$PROJECT_DIR$/tomexam-modules/exammd/exam-model/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/tomexam-modules/dsmd/ds-common/pom.xml" />
+        <option value="$PROJECT_DIR$/tomexam-modules/dsmd/ds-handlr/pom.xml" />
+        <option value="$PROJECT_DIR$/tomexam-modules/dsmd/ds-model/pom.xml" />
+        <option value="$PROJECT_DIR$/tomexam-modules/dsmd/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
