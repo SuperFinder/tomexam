@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns: lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>用户注册</title>
+    <title>title</title>
 </head>
 <body>
-当前位置：<a href="index.html">首页</a> &gt; 用户注册
-请如实填写下列基本信息。
-个人资料被审核后可以根据用户名和密码登陆系统，并参加考试。
-登陆用户名
-登陆密码
-重复密码
-个人编号
-所属分组
-加载分组信息中...
-真实姓名
-电子邮箱
-联系电话
-<input type="button" value="提 交"/>
-<input type="reset" value="重 置"/>
-<span style="color: red; ">对不起，用户注册功能被管理员关闭。</span>
+<form action="/exam-web/user/add">
+    登陆用户名
+    <input name="username"/>
+    登陆密码
+    <input name="password"/>
+    重复密码
+    <input name="rePassword"/>
+    个人编号
+    <input name="deptCode"/>
+    所属分组
+    <input name="gid"/>
+    真实姓名
+    <input name="realName"/>
+    电子邮箱
+    <input name="email"/>
+    联系电话
+    <input name="mobi"/>
+    <input type="reset" value="重 置"/>
+    <input type="submit" value="提 交"/>
+</form>
 </body>
 </html>
