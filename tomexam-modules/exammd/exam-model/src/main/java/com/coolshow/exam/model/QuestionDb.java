@@ -11,8 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class QuestionDb extends BaseQuestionDb<QuestionDb> {
-  private static final QuestionDb dao = Singleton.getInstance().getSingletonObject(QuestionDb.class)
-      .dao();
+  private static final QuestionDb dao = Singleton.getInstance().getSingletonObject(QuestionDb.class);
 
   /**
    * .

@@ -7,9 +7,6 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.SqlPara;
 import org.apache.log4j.Logger;
 
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +14,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class News extends BaseNews<News> {
-  private static final News dao = Singleton.getInstance().getSingletonObject(News.class).dao();
+  private static final News dao = Singleton.getInstance().getSingletonObject(News.class);
   private static Logger logger = Logger.getLogger(News.class.getName());
 
   /**

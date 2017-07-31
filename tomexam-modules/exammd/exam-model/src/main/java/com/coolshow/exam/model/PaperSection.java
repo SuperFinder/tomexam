@@ -11,8 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class PaperSection extends BasePaperSection<PaperSection> {
-  public static final PaperSection dao = Singleton.getInstance().getSingletonObject(PaperSection.class)
-      .dao();
+  public static final PaperSection dao = Singleton.getInstance().getSingletonObject(PaperSection.class);
 
   /**
    * 添加试卷选项

@@ -10,7 +10,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class ExamDetail extends BaseExamDetail<ExamDetail> {
-  private static final ExamDetail dao = Singleton.getInstance().getSingletonObject(ExamDetail.class).dao();
+  private static final ExamDetail dao = Singleton.getInstance().getSingletonObject(ExamDetail.class);
 
   /**
    * .

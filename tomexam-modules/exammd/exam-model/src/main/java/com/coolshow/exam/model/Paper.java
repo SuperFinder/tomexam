@@ -11,7 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Paper extends BasePaper<Paper> {
-  private static final Paper dao = Singleton.getInstance().getSingletonObject(Paper.class).dao();
+  private static final Paper dao = Singleton.getInstance().getSingletonObject(Paper.class);
 
   /**
    * .

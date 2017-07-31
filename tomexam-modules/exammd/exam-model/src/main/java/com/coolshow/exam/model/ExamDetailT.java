@@ -9,5 +9,5 @@ import com.coolshow.exam.model.base.BaseExamDetailT;
 @SuppressWarnings("serial")
 public class ExamDetailT extends BaseExamDetailT<ExamDetailT> {
 	private static final ExamDetailT dao = Singleton.getInstance().getSingletonObject
-			(ExamDetailT.class).dao();
+      (ExamDetailT.class);
 }

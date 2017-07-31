@@ -7,5 +7,5 @@ import com.coolshow.exam.model.base.BaseSystips;
  */
 @SuppressWarnings("serial")
 public class Systips extends BaseSystips<Systips> {
-	public static final Systips dao = new Systips().dao();
+	public static final Systips dao = new Systips();
 }

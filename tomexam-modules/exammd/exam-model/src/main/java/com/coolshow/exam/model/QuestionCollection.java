@@ -13,7 +13,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class QuestionCollection extends BaseQuestionCollection<QuestionCollection> {
   public static final QuestionCollection dao = Singleton.getInstance().getSingletonObject
-      (QuestionCollection.class).dao();
+      (QuestionCollection.class);
 
   //todo 系统时间
   public Integer add(Integer qid, Integer uid, Date cDate, Integer did) {

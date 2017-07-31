@@ -12,7 +12,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class ExamInfo extends BaseExamInfo<ExamInfo> {
-  private static final ExamInfo dao = Singleton.getInstance().getSingletonObject(ExamInfo.class).dao();
+  private static final ExamInfo dao = Singleton.getInstance().getSingletonObject(ExamInfo.class);
 
   /**
    * 依照试卷id，查出该试卷相关信息，分别是

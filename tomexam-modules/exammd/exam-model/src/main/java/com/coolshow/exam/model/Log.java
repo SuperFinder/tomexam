@@ -9,7 +9,7 @@ import com.jfinal.plugin.activerecord.Db;
  */
 @SuppressWarnings("serial")
 public class Log extends BaseLog<Log> {
-  private static final Log dao = Singleton.getInstance().getSingletonObject(Log.class).dao();
+  private static final Log dao = Singleton.getInstance().getSingletonObject(Log.class);
 
   /**
    * @param log 日志

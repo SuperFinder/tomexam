@@ -11,8 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Question extends BaseQuestion<Question> {
-  private static final Question dao = Singleton.getInstance().getSingletonObject(Question.class)
-      .dao();
+  private static final Question dao = Singleton.getInstance().getSingletonObject(Question.class);
 
   //todo 系统时间
   public Integer addAndDept(Question question) {
@@ -32,6 +31,7 @@ public class Question extends BaseQuestion<Question> {
     return dao.find(getSql("question.findByOtherNew"), question.getDbid(), question.getQtype(), question.getQlevel()
         , total);
   }
+
   /**
    * @return 查找所用启用的问题
    */

@@ -9,7 +9,7 @@ import com.jfinal.plugin.activerecord.Db;
  */
 @SuppressWarnings("serial")
 public class User extends BaseUser<User> {
-  private static final User dao = Singleton.getInstance().getSingletonObject(User.class).dao();
+  private static final User dao = Singleton.getInstance().getSingletonObject(User.class);
 
   public Integer add(User user) {
     return Db.update(getSql("user.add"), user.getUserno(), user.getDeptCode(), user.getUsername(),

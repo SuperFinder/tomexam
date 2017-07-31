@@ -12,7 +12,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class PaperUsergroup extends BasePaperUsergroup<PaperUsergroup> {
   public static final PaperUsergroup dao = Singleton.getInstance().getSingletonObject
-      (PaperUsergroup.class).dao();
+      (PaperUsergroup.class);
 
   /**
    * 删除试卷用户组

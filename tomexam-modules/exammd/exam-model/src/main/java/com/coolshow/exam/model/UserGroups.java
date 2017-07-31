@@ -10,11 +10,11 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class UserGroups extends BaseUserGroups<UserGroups> {
-  private static final UserGroups dao = Singleton.getInstance().getSingletonObject(UserGroups.class)
-      .dao();
+  private static final UserGroups dao = Singleton.getInstance().getSingletonObject(UserGroups.class);
 
   /**
-   *.
+   * .
+   *
    * @param groupId 集团id
    * @return 根据部门ID获取部门
    */
@@ -35,6 +35,7 @@ public class UserGroups extends BaseUserGroups<UserGroups> {
 
   /**
    * .
+   *
    * @return 查找集团名字和id
    */
   public List findIdAndName() {

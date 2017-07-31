@@ -24,17 +24,6 @@ public class DepartmentServiceImpl implements DepartmentService {
   }
 
   /**
-   * 根据部门编码获取部门
-   *
-   * @param deptCode
-   * @return
-   */
-  @Override
-  public List findByDeptCode(String deptCode) {
-    return dao.findByDeptCode(deptCode);
-  }
-
-  /**
    * 获取全部部门名字,部门编码
    *
    * @return

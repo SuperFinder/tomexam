@@ -11,8 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class NewsCate extends BaseNewsCate<NewsCate> {
-  private static final NewsCate dao = Singleton.getInstance().getSingletonObject(NewsCate.class)
-      .dao();
+  private static final NewsCate dao = Singleton.getInstance().getSingletonObject(NewsCate.class);
 
   /**
    * .

@@ -11,7 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Config extends BaseConfig<Config> {
-    private static final Config dao = Singleton.getInstance().getSingletonObject(Config.class).dao();
+  private static final Config dao = Singleton.getInstance().getSingletonObject(Config.class);
 
     /**
      *.

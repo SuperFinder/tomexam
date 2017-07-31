@@ -5,7 +5,6 @@ import com.coolshow.exam.model.base.BaseOnline;
 import com.jfinal.plugin.activerecord.Db;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Online extends BaseOnline<Online> {
-  private static final Online dao = Singleton.getInstance().getSingletonObject(Online.class).dao();
+  private static final Online dao = Singleton.getInstance().getSingletonObject(Online.class);
 
 
   /**

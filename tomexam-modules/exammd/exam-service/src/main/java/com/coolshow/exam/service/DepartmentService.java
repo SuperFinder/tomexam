@@ -13,13 +13,6 @@ public interface DepartmentService {
    */
   List findAll();
 
-  /**
-   * 根据部门编码获取部门
-   *
-   * @param deptCode
-   * @return
-   */
-  List findByDeptCode(String deptCode);
 
   /**
    * 获取全部部门名字,部门编码

@@ -12,7 +12,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class PaperDetail extends BasePaperDetail<PaperDetail> {
   private static final PaperDetail dao = Singleton.getInstance().getSingletonObject
-      (PaperDetail.class).dao();
+      (PaperDetail.class);
 
 
   /**

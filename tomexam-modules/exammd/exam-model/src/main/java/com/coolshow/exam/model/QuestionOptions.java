@@ -13,7 +13,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class QuestionOptions extends BaseQuestionOptions<QuestionOptions> {
   private static final QuestionOptions dao = Singleton.getInstance().getSingletonObject
-      (QuestionOptions.class).dao();
+      (QuestionOptions.class);
 
   public Integer addOption() {
     String salisa = "A";

@@ -9,5 +9,5 @@ import com.coolshow.exam.model.base.BaseUserUsergroup;
 @SuppressWarnings("serial")
 public class UserUsergroup extends BaseUserUsergroup<UserUsergroup> {
   public static final UserUsergroup dao = Singleton.getInstance().getSingletonObject
-      (UserUsergroup.class).dao();
+      (UserUsergroup.class);
 }

@@ -11,7 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Plus extends BasePlus<Plus> {
-  private static final Plus dao = Singleton.getInstance().getSingletonObject(Plus.class).dao();
+  private static final Plus dao = Singleton.getInstance().getSingletonObject(Plus.class);
 
   public Integer add(Plus plus) {
     return Db.update(getSql("plus.add"), plus.getPname(), plus.getPdesc(), plus.getPhoto(),

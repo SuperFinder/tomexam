@@ -22,17 +22,6 @@ public class Department extends BaseDepartment<Department> {
   }
 
   /**
-   * 根据部门编码获取部门
-   *
-   * @param deptCode
-   * @return
-   */
-  public List findByDeptCode(String deptCode) {
-
-    return dao.find(getSql("department.findByDeptCode"), deptCode);
-  }
-
-  /**
    * 获取全部部门名字,部门编码
    *
    * @return

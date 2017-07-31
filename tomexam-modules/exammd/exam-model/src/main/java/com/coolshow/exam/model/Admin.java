@@ -13,7 +13,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Admin extends BaseAdmin<Admin> {
-  private static final Admin dao = Singleton.getInstance().getSingletonObject(Admin.class).dao();
+  public static final Admin dao = Singleton.getInstance().getSingletonObject(Admin.class);
 
   /**
    * .
