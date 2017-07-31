@@ -7,7 +7,6 @@ import com.coolshow.exam.service.impl.AdminServiceImpl;
 import com.jfinal.core.Controller;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by ouzj on 2017/7/14.
@@ -41,11 +40,6 @@ public class AdminController extends Controller {
   }
 
   public void add() {
-//    Admin admin = Singleton.getInstance().getSingletonObject(Admin.class);
-//    admin.setStatus(getPara("status"));
-//    admin.setRealname(getPara("realName"));
-//    admin.setMobi(getPara("mobile"));
-//    admin.setRemark(getPara("remark"));
     Admin admin = update();
     admin.setUsername(getPara("username"));
     admin.setDepartmentid(getPara("departmentId"));

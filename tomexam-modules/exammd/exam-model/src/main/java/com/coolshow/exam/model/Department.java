@@ -2,9 +2,7 @@ package com.coolshow.exam.model;
 
 import com.coolshow.exam.common.Singleton;
 import com.coolshow.exam.model.base.BaseDepartment;
-import com.jfinal.plugin.activerecord.Db;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,7 +10,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class Department extends BaseDepartment<Department> {
-  private static final Department dao = Singleton.getInstance().getSingletonObject(Department.class).dao();
+  public static final Department dao = Singleton.getInstance().getSingletonObject(Department.class);
 
   /**
    * 获取全部部门

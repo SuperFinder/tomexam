@@ -14,6 +14,6 @@ public class MainRoute extends Routes {
     add("/news", NewsController.class);
     add("/question", QuestionOptionsController.class);
     add("/user", UserController.class);
-
+    add("/dept", DepartmentController.class);
   }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by ouzj on 2017/7/13.
  */
-public class DepartmentServiceImpl implements DepartmentService{
+public class DepartmentServiceImpl implements DepartmentService {
   private static final Department dao = Singleton.getInstance().getSingletonObject
       (Department.class).dao();
 
