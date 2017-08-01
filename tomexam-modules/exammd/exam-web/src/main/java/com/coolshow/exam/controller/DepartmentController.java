@@ -5,7 +5,7 @@ import com.jfinal.core.Controller;
 
 public class DepartmentController extends Controller {
 
-  public void xx() {
+  public void index() {
     String deptCode = "900001";
     Department deptName = Department.dao.findById(deptCode);
     setAttr("deptName", deptName);
